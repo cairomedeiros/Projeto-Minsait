@@ -1,4 +1,6 @@
 using ClinicaVeterinaria.Data;
+using ClinicaVeterinaria.Repository;
+using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClinicaVeterinaria {
@@ -16,6 +18,9 @@ namespace ClinicaVeterinaria {
             var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
             builder.Services.AddDbContext<ClinicaContext>(options =>
                 options.UseNpgsql(connectionString));
+
+            builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
+            builder.Services.AddScoped<ITutorRepository, TutorRepository>();
 
             var app = builder.Build();
 

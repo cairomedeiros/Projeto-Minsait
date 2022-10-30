@@ -10,9 +10,5 @@
         public string Cor { get; set; }
         public string MedicoResponsavel { get; set; }
 
-        public Paciente() {
-        }
-
-
     }
 }

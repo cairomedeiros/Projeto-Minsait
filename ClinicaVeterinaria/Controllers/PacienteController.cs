@@ -4,8 +4,14 @@ using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicaVeterinaria.Controllers {
-    public class PacienteController : Controller {
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PacienteController : ControllerBase {
         private readonly IPacienteRepository _pacienteRepository;
+
+        public PacienteController(IPacienteRepository pacienteRepository) {
+            _pacienteRepository = pacienteRepository;
+        }
 
         [HttpGet]
         public async Task<ActionResult<List<Paciente>>> RetornarTodosTutores() {

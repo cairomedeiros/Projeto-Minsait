@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ClinicaVeterinaria.Migrations
 {
-    [DbContext(typeof(TutorContext))]
+    [DbContext(typeof(ClinicaContext))]
     partial class TutorContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ClinicaVeterinaria.Migrations
 {
-    [DbContext(typeof(TutorContext))]
+    [DbContext(typeof(ClinicaContext))]
     [Migration("20221030024016_firstmigration")]
     partial class firstmigration
     {

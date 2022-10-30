@@ -14,7 +14,7 @@ namespace ClinicaVeterinaria {
             builder.Services.AddSwaggerGen();
 
             var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
-            builder.Services.AddDbContext<TutorContext>(options =>
+            builder.Services.AddDbContext<ClinicaContext>(options =>
                 options.UseNpgsql(connectionString));
 
             var app = builder.Build();

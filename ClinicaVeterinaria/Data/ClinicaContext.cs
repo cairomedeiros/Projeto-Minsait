@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace ClinicaVeterinaria.Data {
-    public class TutorContext : DbContext {
-        public TutorContext(DbContextOptions<TutorContext> options) : base(options) {
+    public class ClinicaContext : DbContext {
+        public ClinicaContext(DbContextOptions<ClinicaContext> options) : base(options) {
             
         }
 

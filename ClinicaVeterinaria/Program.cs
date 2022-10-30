@@ -1,3 +1,6 @@
+using ClinicaVeterinaria.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace ClinicaVeterinaria {
     public class Program {
         public static void Main(string[] args) {
@@ -9,6 +12,10 @@ namespace ClinicaVeterinaria {
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnection");
+            builder.Services.AddDbContext<TutorContext>(options =>
+                options.UseNpgsql(connectionString));
 
             var app = builder.Build();
 

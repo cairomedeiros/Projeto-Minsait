@@ -7,7 +7,7 @@
         public string Raca { get; set; }
         public int Idade { get; set; }
         public float Peso { get; set; }
-        public string cor { get; set; }
+        public string Cor { get; set; }
         public string MedicoResponsavel { get; set; }
 
         public Paciente() {

@@ -12,3 +12,9 @@ Aplicação em .NET 6 para desenvolvimento de uma API
 
 ### Desejáveis:
 - Docker
+
+## Descrição da aplicação
+Projeto desenvolvido para gerenciar os pacientes de uma clínica veterinária, onde será cadastrado o tutor e o pet
+- cada tutor pode ter mais de um animal (paciente)
+- um animal pode ser monitorado/examinado por mais de um médico
+- um animal pode conter mais de problema/enfermidade

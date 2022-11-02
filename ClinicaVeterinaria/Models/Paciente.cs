@@ -11,10 +11,10 @@ namespace ClinicaVeterinaria.Models {
         public int Idade { get; set; }
         public float Peso { get; set; }
         public string Cor { get; set; }
-        public string MedicoResponsavel { get; set; }
         public Tutor Tutor { get; set; }
+        public List<MedicoResponsavel> MedicoResponsavelList { get; set; }
 
-        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, string medicoResponsavel, Tutor tutor) {
+        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, Tutor tutor) {
             Id = id;
             Nome = nome;
             Especie = especie;
@@ -22,7 +22,6 @@ namespace ClinicaVeterinaria.Models {
             Idade = idade;
             Peso = peso;
             Cor = cor;
-            MedicoResponsavel = medicoResponsavel;
             Tutor = tutor;
         }
 

@@ -9,8 +9,9 @@ namespace ClinicaVeterinaria.Data {
 
         public DbSet<Tutor> Tutores { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<MedicoResponsavel> MedicosResponsaveis { get; set; }
 
-        
+
 
     }
 }

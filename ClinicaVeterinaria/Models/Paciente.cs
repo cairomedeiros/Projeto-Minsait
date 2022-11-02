@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicaVeterinaria.Models {
     public class Paciente {
@@ -10,12 +11,10 @@ namespace ClinicaVeterinaria.Models {
         public int Idade { get; set; }
         public float Peso { get; set; }
         public string Cor { get; set; }
-        public string MedicoResponsavel { get; set; }
-        [ForeignKey("TutorId")]
-        public Guid? TutorId { get; set; }
         public Tutor Tutor { get; set; }
+        public List<MedicoResponsavel> MedicoResponsavelList { get; set; }
 
-        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, string medicoResponsavel, Guid tutorId, Tutor tutor) {
+        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, Tutor tutor) {
             Id = id;
             Nome = nome;
             Especie = especie;
@@ -23,8 +22,6 @@ namespace ClinicaVeterinaria.Models {
             Idade = idade;
             Peso = peso;
             Cor = cor;
-            MedicoResponsavel = medicoResponsavel;
-            TutorId = tutorId;
             Tutor = tutor;
         }
 

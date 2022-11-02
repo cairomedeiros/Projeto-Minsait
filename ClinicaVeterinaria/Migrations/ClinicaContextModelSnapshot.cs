@@ -3,7 +3,6 @@ using System;
 using ClinicaVeterinaria.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,10 +11,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221030202041_initial")]
-    partial class initial
+    partial class ClinicaContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,6 +21,26 @@ namespace ClinicaVeterinaria.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoResponsavel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("MedicosResponsaveis");
+                });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
@@ -41,10 +59,6 @@ namespace ClinicaVeterinaria.Migrations
                     b.Property<int>("Idade")
                         .HasColumnType("integer");
 
-                    b.Property<string>("MedicoResponsavel")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("text");
@@ -56,7 +70,7 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TutorId")
+                    b.Property<Guid>("TutorId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -97,11 +111,31 @@ namespace ClinicaVeterinaria.Migrations
                     b.ToTable("Tutores");
                 });
 
+            modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoResponsavel", b =>
+                {
+                    b.HasOne("ClinicaVeterinaria.Models.Paciente", "Paciente")
+                        .WithMany("MedicoResponsavelList")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
+                });
+
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
-                    b.HasOne("ClinicaVeterinaria.Models.Tutor", null)
+                    b.HasOne("ClinicaVeterinaria.Models.Tutor", "Tutor")
                         .WithMany("PacienteList")
-                        .HasForeignKey("TutorId");
+                        .HasForeignKey("TutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tutor");
+                });
+
+            modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
+                {
+                    b.Navigation("MedicoResponsavelList");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Tutor", b =>

@@ -1,4 +1,5 @@
 using ClinicaVeterinaria.Data;
+using ClinicaVeterinaria.Models;
 using ClinicaVeterinaria.Repository;
 using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace ClinicaVeterinaria {
 
             builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
             builder.Services.AddScoped<ITutorRepository, TutorRepository>();
+            builder.Services.AddScoped<IMedicoResponsavelRepository, MedicoResponsavelRepository>();
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

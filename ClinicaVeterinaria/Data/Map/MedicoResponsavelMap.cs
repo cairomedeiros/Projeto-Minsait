@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ClinicaVeterinaria.Data.Map {
-    public class PacienteMap : IEntityTypeConfiguration<Paciente>  {
-        public void Configure(EntityTypeBuilder<Paciente> builder) {
+    public class MedicoResponsavelMap : IEntityTypeConfiguration<MedicoResponsavel> {
+
+        public void Configure(EntityTypeBuilder<MedicoResponsavel> builder) {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Nome).IsRequired().HasMaxLength(100);
         }

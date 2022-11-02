@@ -18,7 +18,10 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<Paciente> BuscarPorId(Guid id) {
-            var paciente = await _dbContext.Pacientes.FindAsync(id);
+            var paciente = await _dbContext.Pacientes
+                .Include(y => y.Tutor)
+                .Include(z => z.MedicoResponsavelList)
+                .FirstOrDefaultAsync(y => y.Id == id);
 
             if (paciente == null) {
                 throw new Exception($"Paciente com Id: ${id} não encontrado");
@@ -53,7 +56,6 @@ namespace ClinicaVeterinaria.Repository {
             pacienteId.Idade = paciente.Idade;
             pacienteId.Peso = paciente.Peso;
             pacienteId.Cor = paciente.Cor;
-            pacienteId.MedicoResponsavel = paciente.MedicoResponsavel;
 
             _dbContext.Pacientes.Update(pacienteId);
             await _dbContext.SaveChangesAsync();
@@ -62,7 +64,7 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<List<Paciente>> RetornarTodosPacientes() {
-            return await _dbContext.Pacientes.ToListAsync();
+            return await _dbContext.Pacientes.Include(y => y.Tutor).Include(z => z.MedicoResponsavelList).ToListAsync();
         }
     }
 }

@@ -18,7 +18,9 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<Paciente> BuscarPorId(Guid id) {
-            var paciente = await _dbContext.Pacientes.FindAsync(id);
+            var paciente = await _dbContext.Pacientes
+                .Include(y => y.Tutor)
+                .FirstOrDefaultAsync(y => y.Id == id);
 
             if (paciente == null) {
                 throw new Exception($"Paciente com Id: ${id} não encontrado");
@@ -62,7 +64,7 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<List<Paciente>> RetornarTodosPacientes() {
-            return await _dbContext.Pacientes.ToListAsync();
+            return await _dbContext.Pacientes.Include(y => y.Tutor).ToListAsync();
         }
     }
 }

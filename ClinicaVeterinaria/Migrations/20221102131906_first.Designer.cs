@@ -3,6 +3,7 @@ using System;
 using ClinicaVeterinaria.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    partial class TutorContextModelSnapshot : ModelSnapshot
+    [Migration("20221102131906_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,6 +29,10 @@ namespace ClinicaVeterinaria.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Cor")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Especie")
                         .IsRequired()
@@ -50,12 +56,8 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TutorId")
+                    b.Property<Guid>("TutorId")
                         .HasColumnType("uuid");
-
-                    b.Property<string>("cor")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -97,9 +99,13 @@ namespace ClinicaVeterinaria.Migrations
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
-                    b.HasOne("ClinicaVeterinaria.Models.Tutor", null)
+                    b.HasOne("ClinicaVeterinaria.Models.Tutor", "Tutor")
                         .WithMany("PacienteList")
-                        .HasForeignKey("TutorId");
+                        .HasForeignKey("TutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Tutor", b =>

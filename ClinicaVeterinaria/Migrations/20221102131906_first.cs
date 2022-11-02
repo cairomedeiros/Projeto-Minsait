@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ClinicaVeterinaria.Migrations
 {
-    public partial class firstmigration : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,9 +35,9 @@ namespace ClinicaVeterinaria.Migrations
                     Raca = table.Column<string>(type: "text", nullable: false),
                     Idade = table.Column<int>(type: "integer", nullable: false),
                     Peso = table.Column<float>(type: "real", nullable: false),
-                    cor = table.Column<string>(type: "text", nullable: false),
+                    Cor = table.Column<string>(type: "text", nullable: false),
                     MedicoResponsavel = table.Column<string>(type: "text", nullable: false),
-                    TutorId = table.Column<Guid>(type: "uuid", nullable: true)
+                    TutorId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,7 +46,8 @@ namespace ClinicaVeterinaria.Migrations
                         name: "FK_Pacientes_Tutores_TutorId",
                         column: x => x.TutorId,
                         principalTable: "Tutores",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

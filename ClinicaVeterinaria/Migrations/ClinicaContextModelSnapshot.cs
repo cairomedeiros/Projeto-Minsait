@@ -3,7 +3,6 @@ using System;
 using ClinicaVeterinaria.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,10 +11,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221030202041_initial")]
-    partial class initial
+    partial class ClinicaContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +54,7 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TutorId")
+                    b.Property<Guid>("TutorId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -99,9 +97,13 @@ namespace ClinicaVeterinaria.Migrations
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
-                    b.HasOne("ClinicaVeterinaria.Models.Tutor", null)
+                    b.HasOne("ClinicaVeterinaria.Models.Tutor", "Tutor")
                         .WithMany("PacienteList")
-                        .HasForeignKey("TutorId");
+                        .HasForeignKey("TutorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tutor");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Tutor", b =>

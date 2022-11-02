@@ -22,6 +22,26 @@ namespace ClinicaVeterinaria.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoResponsavel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("PacienteId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("MedicosResponsaveis");
+                });
+
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -38,10 +58,6 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.Property<int>("Idade")
                         .HasColumnType("integer");
-
-                    b.Property<string>("MedicoResponsavel")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -95,6 +111,17 @@ namespace ClinicaVeterinaria.Migrations
                     b.ToTable("Tutores");
                 });
 
+            modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoResponsavel", b =>
+                {
+                    b.HasOne("ClinicaVeterinaria.Models.Paciente", "Paciente")
+                        .WithMany("MedicoResponsavelList")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
+                });
+
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
                     b.HasOne("ClinicaVeterinaria.Models.Tutor", "Tutor")
@@ -104,6 +131,11 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired();
 
                     b.Navigation("Tutor");
+                });
+
+            modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
+                {
+                    b.Navigation("MedicoResponsavelList");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Tutor", b =>

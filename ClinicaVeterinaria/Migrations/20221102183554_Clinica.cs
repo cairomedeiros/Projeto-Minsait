@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ClinicaVeterinaria.Migrations
 {
-    public partial class first : Migration
+    public partial class Clinica : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,6 @@ namespace ClinicaVeterinaria.Migrations
                     Idade = table.Column<int>(type: "integer", nullable: false),
                     Peso = table.Column<float>(type: "real", nullable: false),
                     Cor = table.Column<string>(type: "text", nullable: false),
-                    MedicoResponsavel = table.Column<string>(type: "text", nullable: false),
                     TutorId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
@@ -50,6 +49,30 @@ namespace ClinicaVeterinaria.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MedicosResponsaveis",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Nome = table.Column<string>(type: "text", nullable: false),
+                    PacienteId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedicosResponsaveis", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MedicosResponsaveis_Pacientes_PacienteId",
+                        column: x => x.PacienteId,
+                        principalTable: "Pacientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MedicosResponsaveis_PacienteId",
+                table: "MedicosResponsaveis",
+                column: "PacienteId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Pacientes_TutorId",
                 table: "Pacientes",
@@ -58,6 +81,9 @@ namespace ClinicaVeterinaria.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "MedicosResponsaveis");
+
             migrationBuilder.DropTable(
                 name: "Pacientes");
 

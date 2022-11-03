@@ -10,8 +10,36 @@ namespace ClinicaVeterinaria.Data {
         public DbSet<Tutor> Tutores { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<MedicoResponsavel> MedicosResponsaveis { get; set; }
+        public DbSet<MedicoPaciente> MedicosPacientes { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            Guid T1 = Guid.Parse("ea249baac22a495f981bed6d7c9ea029");
+            Guid T2 = Guid.Parse("40213770be5a4c209a3b31e405378768");
+            Guid P1 = Guid.Parse("368a40873de74bc8921eaa6a5a9be54a");
+            Guid P2 = Guid.Parse("234eea2a034845b599a144b20f010e03");
+            Guid M1 = Guid.Parse("e894a7a136c94b7d995ab23de86f4c36");
+            Guid M2 = Guid.Parse("b6d4b2879e5e4c368320689a941d8074");
 
+            modelBuilder.Entity<MedicoPaciente>()
+                .HasKey(c => new { c.PacienteId, c.MedicoResponsavelId});
 
+            modelBuilder.Entity<Tutor>().HasData(
+            new Tutor { Id = T1, Nome = "Cairo", CPF = "12312332124", Endereco = "Cabedelo", Telefone = "99999999", DataNascimento = "05/07/2000" },
+            new Tutor { Id = T2, Nome = "Rita", CPF = "12312332124", Endereco = "JP", Telefone = "99999999", DataNascimento = "02/05/2002" }
+            );
+
+            modelBuilder.Entity<Paciente>().HasData(
+            new Paciente { Id = P1, Nome = "Nymeria", Especie = "Cachorro", Raca = "Pastor Alemão", Idade = 4, Peso = 22, Cor = "Preta", TutorId = T1, MedicoId = M1},
+            new Paciente { Id = P2, Nome = "Mel", Especie = "Cachorro", Raca = "Shitzu", Idade = 7, Peso = 10, Cor = "Marrom", TutorId = T2, MedicoId = M2 }
+            );
+
+            modelBuilder.Entity<MedicoResponsavel>().HasData(
+            new MedicoResponsavel { Id = M1, Nome = "Naruto", PacienteId = P1},
+            new MedicoResponsavel { Id = M2, Nome = "Jiraya", PacienteId = P2 }
+            );
+
+            
+            
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace ClinicaVeterinaria.Repository {
 
         public async Task<MedicoResponsavel> BuscarPorId(Guid id) {
             var medicoResponsavel = await _dbContext.MedicosResponsaveis
+                .Include(b => b.PacienteList)
                 .FirstOrDefaultAsync(y => y.Id == id);
 
             if (medicoResponsavel == null)
@@ -53,7 +54,9 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<List<MedicoResponsavel>> RetornarTodosMedicos() {
-            return await _dbContext.MedicosResponsaveis.ToListAsync();
+            return await _dbContext.MedicosResponsaveis
+                .Include(a => a.PacienteList)
+                .ToListAsync();
         }
     }
 }

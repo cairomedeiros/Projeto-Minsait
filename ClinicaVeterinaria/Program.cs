@@ -24,7 +24,6 @@ namespace ClinicaVeterinaria {
             builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
             builder.Services.AddScoped<ITutorRepository, TutorRepository>();
             builder.Services.AddScoped<IMedicoResponsavelRepository, MedicoResponsavelRepository>();
-            builder.Services.AddScoped<SeedingService>();
             builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -32,23 +31,10 @@ namespace ClinicaVeterinaria {
 
             
 
-            void SeedData(IHost app) {
-                var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
-
-                using (var scope = scopedFactory.CreateScope())
-                {
-                    var service = scope.ServiceProvider.GetService<SeedingService>();
-                    service.Seed();
-                }
-            }
-
-            
-
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment()) {
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                SeedData(app);
             }
 
             app.UseHttpsRedirection();

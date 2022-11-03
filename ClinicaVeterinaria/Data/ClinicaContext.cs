@@ -10,7 +10,6 @@ namespace ClinicaVeterinaria.Data {
         public DbSet<Tutor> Tutores { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<MedicoResponsavel> MedicosResponsaveis { get; set; }
-        public DbSet<MedicoPaciente> MedicosPacientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             Guid T1 = Guid.Parse("ea249baac22a495f981bed6d7c9ea029");
@@ -19,9 +18,6 @@ namespace ClinicaVeterinaria.Data {
             Guid P2 = Guid.Parse("234eea2a034845b599a144b20f010e03");
             Guid M1 = Guid.Parse("e894a7a136c94b7d995ab23de86f4c36");
             Guid M2 = Guid.Parse("b6d4b2879e5e4c368320689a941d8074");
-
-            modelBuilder.Entity<MedicoPaciente>()
-                .HasKey(c => new { c.PacienteId, c.MedicoResponsavelId});
 
             modelBuilder.Entity<Tutor>().HasData(
             new Tutor { Id = T1, Nome = "Cairo", CPF = "12312332124", Endereco = "Cabedelo", Telefone = "99999999", DataNascimento = "05/07/2000" },

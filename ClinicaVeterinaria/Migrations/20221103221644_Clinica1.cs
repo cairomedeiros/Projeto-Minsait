@@ -5,22 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ClinicaVeterinaria.Migrations
 {
-    public partial class Clinica : Migration
+    public partial class Clinica1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "MedicosPacientes",
-                columns: table => new
-                {
-                    MedicoResponsavelId = table.Column<Guid>(type: "uuid", nullable: false),
-                    PacienteId = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MedicosPacientes", x => new { x.PacienteId, x.MedicoResponsavelId });
-                });
-
             migrationBuilder.CreateTable(
                 name: "MedicosResponsaveis",
                 columns: table => new
@@ -135,15 +123,15 @@ namespace ClinicaVeterinaria.Migrations
                 name: "IX_Pacientes_TutorId",
                 table: "Pacientes",
                 column: "TutorId");
+
+            
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "MedicoResponsavelPaciente");
-
-            migrationBuilder.DropTable(
-                name: "MedicosPacientes");
 
             migrationBuilder.DropTable(
                 name: "MedicosResponsaveis");

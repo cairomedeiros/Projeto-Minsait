@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221103202913_Clinica")]
-    partial class Clinica
+    [Migration("20221103221644_Clinica1")]
+    partial class Clinica1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,19 +23,6 @@ namespace ClinicaVeterinaria.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoPaciente", b =>
-                {
-                    b.Property<Guid>("PacienteId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("MedicoResponsavelId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("PacienteId", "MedicoResponsavelId");
-
-                    b.ToTable("MedicosPacientes");
-                });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoResponsavel", b =>
                 {

@@ -15,6 +15,7 @@ namespace ClinicaVeterinaria.Data {
             Guid T2 = Guid.Parse("40213770be5a4c209a3b31e405378768");
             Guid P1 = Guid.Parse("368a40873de74bc8921eaa6a5a9be54a");
             Guid P2 = Guid.Parse("234eea2a034845b599a144b20f010e03");
+            
 
             modelBuilder.Entity<Tutor>().HasData(
             new Tutor { Id = T1, Nome = "Cairo", CPF = "12312332124", Endereco = "Cabedelo", Telefone = "99999999", DataNascimento = "05/07/2000" },
@@ -22,8 +23,8 @@ namespace ClinicaVeterinaria.Data {
             );
 
             modelBuilder.Entity<Paciente>().HasData(
-            new Paciente { Id = P1, Nome = "Nymeria", Especie = "Cachorro", Raca = "Pastor Alemão", Idade = 4, Peso = 22, Cor = "Preta", TutorId = T1},
-            new Paciente { Id = P2, Nome = "Mel", Especie = "Cachorro", Raca = "Shitzu", Idade = 7, Peso = 10, Cor = "Marrom", TutorId = T2}
+            new Paciente { Id = P1, Nome = "Nymeria", Especie = "Cachorro", Raca = "Pastor Alemão", Idade = 4, Peso = 22, Cor = "Preta", EDirecaoEspecialidade = (Enum.EDirecaoEspecialidade.Odontologia), TutorId = T1},
+            new Paciente { Id = P2, Nome = "Mel", Especie = "Cachorro", Raca = "Shitzu", Idade = 7, Peso = 10, Cor = "Marrom",EDirecaoEspecialidade = (Enum.EDirecaoEspecialidade.Odontologia), TutorId = T2}
             
             );
 

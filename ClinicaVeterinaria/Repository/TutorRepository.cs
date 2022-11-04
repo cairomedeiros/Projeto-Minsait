@@ -16,7 +16,6 @@ namespace ClinicaVeterinaria.Repository {
             tutor.Id = Guid.NewGuid();
             await _dbContext.Tutores.AddAsync(tutor);
             await _dbContext.SaveChangesAsync();
-
             return tutor;
         }
 

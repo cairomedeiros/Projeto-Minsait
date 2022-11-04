@@ -1,4 +1,5 @@
 ﻿using ClinicaVeterinaria.Models;
+using ClinicaVeterinaria.Models.Dtos;
 
 namespace ClinicaVeterinaria.Repository.Interfaces {
     public interface IPacienteRepository {
@@ -6,7 +7,7 @@ namespace ClinicaVeterinaria.Repository.Interfaces {
 
         Task<List<Paciente>> RetornarTodosPacientes();
         Task<Paciente> BuscarPorId(Guid id);
-        Task<Paciente> Adicionar(Paciente paciente);
+        Task<Paciente> Adicionar(PacienteAdicionarDto pacienteAdicionarDto);
         Task<Paciente> Editar(Guid id, Paciente paciente);
         Task<bool> DeletarPaciente(Guid id);
     }

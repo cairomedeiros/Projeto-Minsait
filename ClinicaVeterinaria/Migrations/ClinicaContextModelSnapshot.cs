@@ -22,38 +22,6 @@ namespace ClinicaVeterinaria.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ClinicaVeterinaria.Models.MedicoResponsavel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("PacienteId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MedicosResponsaveis");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("e894a7a1-36c9-4b7d-995a-b23de86f4c36"),
-                            Nome = "Naruto",
-                            PacienteId = new Guid("368a4087-3de7-4bc8-921e-aa6a5a9be54a")
-                        },
-                        new
-                        {
-                            Id = new Guid("b6d4b287-9e5e-4c36-8320-689a941d8074"),
-                            Nome = "Jiraya",
-                            PacienteId = new Guid("234eea2a-0348-45b5-99a1-44b20f010e03")
-                        });
-                });
-
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -70,9 +38,6 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.Property<int>("Idade")
                         .HasColumnType("integer");
-
-                    b.Property<Guid>("MedicoId")
-                        .HasColumnType("uuid");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -101,7 +66,6 @@ namespace ClinicaVeterinaria.Migrations
                             Cor = "Preta",
                             Especie = "Cachorro",
                             Idade = 4,
-                            MedicoId = new Guid("e894a7a1-36c9-4b7d-995a-b23de86f4c36"),
                             Nome = "Nymeria",
                             Peso = 22f,
                             Raca = "Pastor Alemão",
@@ -113,7 +77,6 @@ namespace ClinicaVeterinaria.Migrations
                             Cor = "Marrom",
                             Especie = "Cachorro",
                             Idade = 7,
-                            MedicoId = new Guid("b6d4b287-9e5e-4c36-8320-689a941d8074"),
                             Nome = "Mel",
                             Peso = 10f,
                             Raca = "Shitzu",
@@ -172,43 +135,11 @@ namespace ClinicaVeterinaria.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MedicoResponsavelPaciente", b =>
-                {
-                    b.Property<Guid>("MedicoResponsavelListId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("PacienteListId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("MedicoResponsavelListId", "PacienteListId");
-
-                    b.HasIndex("PacienteListId");
-
-                    b.ToTable("MedicoResponsavelPaciente");
-                });
-
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
-                    b.HasOne("ClinicaVeterinaria.Models.Tutor", "Tutor")
+                    b.HasOne("ClinicaVeterinaria.Models.Tutor", null)
                         .WithMany("PacienteList")
                         .HasForeignKey("TutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tutor");
-                });
-
-            modelBuilder.Entity("MedicoResponsavelPaciente", b =>
-                {
-                    b.HasOne("ClinicaVeterinaria.Models.MedicoResponsavel", null)
-                        .WithMany()
-                        .HasForeignKey("MedicoResponsavelListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ClinicaVeterinaria.Models.Paciente", null)
-                        .WithMany()
-                        .HasForeignKey("PacienteListId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

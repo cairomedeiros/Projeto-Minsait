@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using ClinicaVeterinaria.Enum;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,9 +15,10 @@ namespace ClinicaVeterinaria.Models {
         public int Idade { get; set; }
         public float Peso { get; set; }
         public string Cor { get; set; }
+        public EDirecaoEspecialidade EDirecaoEspecialidade { get; set; }
         public Guid TutorId { get; set; }
 
-        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, Guid tutorId) {
+        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, EDirecaoEspecialidade eDirecaoEspecialidade, Guid tutorId) {
             Id = id;
             Nome = nome;
             Especie = especie;
@@ -24,6 +26,7 @@ namespace ClinicaVeterinaria.Models {
             Idade = idade;
             Peso = peso;
             Cor = cor;
+            EDirecaoEspecialidade = eDirecaoEspecialidade;
             TutorId = tutorId;
         }
 

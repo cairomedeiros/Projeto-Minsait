@@ -1,5 +1,6 @@
 ﻿using ClinicaVeterinaria.Data;
 using ClinicaVeterinaria.Models;
+using ClinicaVeterinaria.Models.Dtos;
 using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,8 +11,19 @@ namespace ClinicaVeterinaria.Repository {
         public PacienteRepository(ClinicaContext dbContext) {
             _dbContext = dbContext;
         }
-        public async Task<Paciente> Adicionar(Paciente paciente) {
-            paciente.Id = Guid.NewGuid();
+        public async Task<Paciente> Adicionar(PacienteAdicionarDto pacienteAdicionarDto) {
+            
+            Paciente paciente = new Paciente();
+            paciente.Nome = pacienteAdicionarDto.Nome;
+            paciente.Especie = pacienteAdicionarDto.Especie;
+            paciente.Raca = pacienteAdicionarDto.Raca;
+            paciente.Idade = pacienteAdicionarDto.Idade;
+            paciente.Peso = pacienteAdicionarDto.Peso;
+            paciente.Cor = pacienteAdicionarDto.Cor;
+            paciente.TutorId = pacienteAdicionarDto.TutorId;
+            paciente.EDirecaoEspecialidade = pacienteAdicionarDto.EDirecaoEspecialidade;
+
+
             await _dbContext.Pacientes.AddAsync(paciente);
             await _dbContext.SaveChangesAsync();
 

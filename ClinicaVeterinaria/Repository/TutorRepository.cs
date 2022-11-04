@@ -21,9 +21,11 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<Tutor> BuscarPorId(Guid id) {
-            
-            var tutor = await _dbContext.Tutores.FindAsync(id);
-            
+
+            var tutor = await _dbContext.Tutores
+                .Include(x => x.PacienteList)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
 
             if (tutor == null) {
                 throw new Exception($"Tutor com Id: ${id} não encontrado");

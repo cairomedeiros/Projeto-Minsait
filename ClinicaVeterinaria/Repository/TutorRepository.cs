@@ -13,7 +13,7 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<Tutor> Adicionar(Tutor tutor) {
-
+            tutor.Id = Guid.NewGuid();
             await _dbContext.Tutores.AddAsync(tutor);
             await _dbContext.SaveChangesAsync();
 

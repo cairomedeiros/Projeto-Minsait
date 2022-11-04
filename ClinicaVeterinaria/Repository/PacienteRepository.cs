@@ -11,6 +11,7 @@ namespace ClinicaVeterinaria.Repository {
             _dbContext = dbContext;
         }
         public async Task<Paciente> Adicionar(Paciente paciente) {
+            paciente.Id = Guid.NewGuid();
             await _dbContext.Pacientes.AddAsync(paciente);
             await _dbContext.SaveChangesAsync();
 
@@ -23,6 +24,7 @@ namespace ClinicaVeterinaria.Repository {
 
             if (paciente == null) {
                 throw new Exception($"Paciente com Id: ${id} não encontrado");
+
             }
 
             return paciente;

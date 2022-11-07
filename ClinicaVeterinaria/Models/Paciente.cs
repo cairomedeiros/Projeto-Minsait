@@ -9,16 +9,30 @@ namespace ClinicaVeterinaria.Models {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public Guid Id { get; set; }
+        [Required]
+        [MaxLength(100)]
         public string Nome { get; set; }
+        [Required]
+        [MaxLength(100)]
         public string Especie { get; set; }
+        [Required]
+        [MaxLength(150)]
         public string Raca { get; set; }
-        public int Idade { get; set; }
-        public float Peso { get; set; }
+        [Required]
+        [MaxLength(2)]
+        public double Idade { get; set; }
+        [Required]
+        [MaxLength(4)]
+        public double Peso { get; set; }
+        [MaxLength(80)]
+        [Required]
         public string Cor { get; set; }
-        public EDirecaoEspecialidade EDirecaoEspecialidade { get; set; }
+        [Required]
         public Guid TutorId { get; set; }
+        [Required]
+        public EDirecaoEspecialidade EDirecaoEspecialidade { get; set; }
 
-        public Paciente(Guid id, string nome, string especie, string raca, int idade, float peso, string cor, EDirecaoEspecialidade eDirecaoEspecialidade, Guid tutorId) {
+        public Paciente(Guid id, string nome, string especie, string raca, double idade, double peso, string cor, EDirecaoEspecialidade eDirecaoEspecialidade, Guid tutorId) {
             Id = id;
             Nome = nome;
             Especie = especie;

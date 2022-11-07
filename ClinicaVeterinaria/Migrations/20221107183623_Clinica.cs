@@ -37,7 +37,7 @@ namespace ClinicaVeterinaria.Migrations
                     Peso = table.Column<double>(type: "double precision", maxLength: 4, nullable: false),
                     Cor = table.Column<string>(type: "character varying(80)", maxLength: 80, nullable: false),
                     TutorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    EDirecaoEspecialidade = table.Column<int>(type: "integer", nullable: false)
+                    EResultadoTriagem = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,11 +61,11 @@ namespace ClinicaVeterinaria.Migrations
 
             migrationBuilder.InsertData(
                 table: "Pacientes",
-                columns: new[] { "Id", "Cor", "EDirecaoEspecialidade", "Especie", "Idade", "Nome", "Peso", "Raca", "TutorId" },
+                columns: new[] { "Id", "Cor", "EResultadoTriagem", "Especie", "Idade", "Nome", "Peso", "Raca", "TutorId" },
                 values: new object[,]
                 {
-                    { new Guid("234eea2a-0348-45b5-99a1-44b20f010e03"), "Marrom", 6, "Cachorro", 7.0, "Mel", 10.0, "Shitzu", new Guid("40213770-be5a-4c20-9a3b-31e405378768") },
-                    { new Guid("368a4087-3de7-4bc8-921e-aa6a5a9be54a"), "Preta", 6, "Cachorro", 4.0, "Nymeria", 22.0, "Pastor Alemão", new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029") }
+                    { new Guid("234eea2a-0348-45b5-99a1-44b20f010e03"), "Marrom", "Cardiologia", "Cachorro", 7.0, "Mel", 10.0, "Shitzu", new Guid("40213770-be5a-4c20-9a3b-31e405378768") },
+                    { new Guid("368a4087-3de7-4bc8-921e-aa6a5a9be54a"), "Preta", "Odontologia", "Cachorro", 4.0, "Nymeria", 22.0, "Pastor Alemão", new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029") }
                 });
 
             migrationBuilder.CreateIndex(

@@ -33,8 +33,9 @@ namespace ClinicaVeterinaria.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("character varying(80)");
 
-                    b.Property<int>("EDirecaoEspecialidade")
-                        .HasColumnType("integer");
+                    b.Property<string>("EResultadoTriagem")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Especie")
                         .IsRequired()
@@ -73,7 +74,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("368a4087-3de7-4bc8-921e-aa6a5a9be54a"),
                             Cor = "Preta",
-                            EDirecaoEspecialidade = 5,
+                            EResultadoTriagem = "Odontologia",
                             Especie = "Cachorro",
                             Idade = 4.0,
                             Nome = "Nymeria",
@@ -85,7 +86,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("234eea2a-0348-45b5-99a1-44b20f010e03"),
                             Cor = "Marrom",
-                            EDirecaoEspecialidade = 0,
+                            EResultadoTriagem = "Cardiologia",
                             Especie = "Cachorro",
                             Idade = 7.0,
                             Nome = "Mel",

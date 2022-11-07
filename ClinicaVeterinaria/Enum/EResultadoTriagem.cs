@@ -1,10 +1,13 @@
 ﻿namespace ClinicaVeterinaria.Enum {
-    public enum EDirecaoEspecialidade {
+    public enum EResultadoTriagem{
         Cardiologia,
-        ComportamentoAnimal,
+        Nefrologia,
         Endocrinologia,
         Fisioterapia,
         Hematologia,
         Odontologia,
+        Nutrologia,
+        Ortopedia,
+        Oftalmologia,
     }
 }

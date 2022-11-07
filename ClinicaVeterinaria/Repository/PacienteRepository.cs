@@ -21,7 +21,7 @@ namespace ClinicaVeterinaria.Repository {
             paciente.Peso = pacienteAdicionarDto.Peso;
             paciente.Cor = pacienteAdicionarDto.Cor;
             paciente.TutorId = pacienteAdicionarDto.TutorId;
-            paciente.EDirecaoEspecialidade = pacienteAdicionarDto.EDirecaoEspecialidade;
+            paciente.EResultadoTriagem = pacienteAdicionarDto.EResultadoTriagem;
 
 
             await _dbContext.Pacientes.AddAsync(paciente);

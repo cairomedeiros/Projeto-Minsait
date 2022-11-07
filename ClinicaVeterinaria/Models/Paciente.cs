@@ -30,9 +30,9 @@ namespace ClinicaVeterinaria.Models {
         [Required]
         public Guid TutorId { get; set; }
         [Required]
-        public EDirecaoEspecialidade EDirecaoEspecialidade { get; set; }
+        public EResultadoTriagem EResultadoTriagem { get; set; }
 
-        public Paciente(Guid id, string nome, string especie, string raca, double idade, double peso, string cor, EDirecaoEspecialidade eDirecaoEspecialidade, Guid tutorId) {
+        public Paciente(Guid id, string nome, string especie, string raca, double idade, double peso, string cor, EResultadoTriagem eResultadoTriagem, Guid tutorId) {
             Id = id;
             Nome = nome;
             Especie = especie;
@@ -40,7 +40,7 @@ namespace ClinicaVeterinaria.Models {
             Idade = idade;
             Peso = peso;
             Cor = cor;
-            EDirecaoEspecialidade = eDirecaoEspecialidade;
+            EResultadoTriagem = eResultadoTriagem;
             TutorId = tutorId;
         }
 

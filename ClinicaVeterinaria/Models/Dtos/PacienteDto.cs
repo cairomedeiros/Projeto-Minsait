@@ -24,6 +24,6 @@ namespace ClinicaVeterinaria.Models.Dtos {
         [Required]
         public Guid TutorId { get; set; }
         [Required]
-        public EDirecaoEspecialidade EDirecaoEspecialidade { get; set; }
+        public EResultadoTriagem EResultadoTriagem { get; set; }
     }
 }

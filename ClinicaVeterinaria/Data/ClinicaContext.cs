@@ -23,8 +23,8 @@ namespace ClinicaVeterinaria.Data {
             );
 
             modelBuilder.Entity<Paciente>().HasData(
-            new Paciente { Id = P1, Nome = "Nymeria", Especie = "Cachorro", Raca = "Pastor Alemão", Idade = 4, Peso = 22, Cor = "Preta", EDirecaoEspecialidade = (Enum.EDirecaoEspecialidade.Odontologia), TutorId = T1},
-            new Paciente { Id = P2, Nome = "Mel", Especie = "Cachorro", Raca = "Shitzu", Idade = 7, Peso = 10, Cor = "Marrom",EDirecaoEspecialidade = (Enum.EDirecaoEspecialidade.Odontologia), TutorId = T2}
+            new Paciente { Id = P1, Nome = "Nymeria", Especie = "Cachorro", Raca = "Pastor Alemão", Idade = 4, Peso = 22, Cor = "Preta", EDirecaoEspecialidade = Enum.EDirecaoEspecialidade.Odontologia, TutorId = T1},
+            new Paciente { Id = P2, Nome = "Mel", Especie = "Cachorro", Raca = "Shitzu", Idade = 7, Peso = 10, Cor = "Marrom",EDirecaoEspecialidade = Enum.EDirecaoEspecialidade.Cardiologia, TutorId = T2}
             
             );
 

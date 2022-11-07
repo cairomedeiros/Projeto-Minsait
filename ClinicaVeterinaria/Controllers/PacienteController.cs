@@ -27,7 +27,7 @@ namespace ClinicaVeterinaria.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult<Paciente>> Adicionar([FromBody] PacienteAdicionarDto pacienteAdicionarDto) {
+        public async Task<ActionResult<Paciente>> Adicionar([FromBody] PacienteDto pacienteAdicionarDto) {
             Paciente resultado = await _pacienteRepository.Adicionar(pacienteAdicionarDto);
             return Ok(resultado);
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using ClinicaVeterinaria.Models.Dtos;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +14,7 @@ namespace ClinicaVeterinaria.Models {
         public string Telefone { get; set; }
         public string DataNascimento { get; set; }
         [ForeignKey("TutorId")]
-        public List<Paciente> PacienteList { get; set; }
+        public List<PacienteDto> PacienteDtoList { get; set; }
 
         public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, string dataNascimento) {
             Id = id;

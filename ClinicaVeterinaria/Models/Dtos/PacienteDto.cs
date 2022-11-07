@@ -1,7 +1,7 @@
 ﻿using ClinicaVeterinaria.Enum;
 
 namespace ClinicaVeterinaria.Models.Dtos {
-    public class PacienteAdicionarDto {
+    public class PacienteDto {
         public string Nome { get; set; }
         public string Especie { get; set; }
         public string Raca { get; set; }

@@ -1,5 +1,6 @@
 ﻿using ClinicaVeterinaria.Data;
 using ClinicaVeterinaria.Models;
+using ClinicaVeterinaria.Models.Dtos;
 using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
@@ -12,8 +13,16 @@ namespace ClinicaVeterinaria.Repository {
             _dbContext = dbContext;
         }
 
-        public async Task<Tutor> Adicionar(Tutor tutor) {
-            tutor.Id = Guid.NewGuid();
+        public async Task<Tutor> Adicionar(TutorAdicionarDto tutorAdicionarDto) {
+            Tutor tutor = new Tutor();
+
+            tutor.Nome = tutorAdicionarDto.Nome;
+            tutor.CPF = tutorAdicionarDto.CPF;
+            tutor.Endereco = tutorAdicionarDto.Endereco;
+            tutor.Telefone = tutorAdicionarDto.Telefone;
+            tutor.DataNascimento = tutorAdicionarDto.DataNascimento;
+            tutor.PacienteDtoList = tutorAdicionarDto.PacienteDtoList;
+
             await _dbContext.Tutores.AddAsync(tutor);
             await _dbContext.SaveChangesAsync();
             return tutor;
@@ -22,7 +31,7 @@ namespace ClinicaVeterinaria.Repository {
         public async Task<Tutor> BuscarPorId(Guid id) {
 
             var tutor = await _dbContext.Tutores
-                .Include(x => x.PacienteList)
+                .Include(x => x.PacienteDtoList)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
 
@@ -59,7 +68,7 @@ namespace ClinicaVeterinaria.Repository {
             tutorId.Endereco = tutor.Endereco;
             tutorId.Telefone = tutor.Telefone;
             tutorId.DataNascimento = tutor.DataNascimento;
-            tutorId.PacienteList = tutor.PacienteList;
+            tutorId.PacienteDtoList = tutor.PacienteDtoList;
 
             _dbContext.Tutores.Update(tutorId);
             await _dbContext.SaveChangesAsync();
@@ -68,7 +77,7 @@ namespace ClinicaVeterinaria.Repository {
         }
 
         public async Task<List<Tutor>> RetornarTodosTutores() {
-            return await _dbContext.Tutores.Include(x => x.PacienteList).ToListAsync();
+            return await _dbContext.Tutores.Include(x => x.PacienteDtoList).ToListAsync();
         }
     }
 }

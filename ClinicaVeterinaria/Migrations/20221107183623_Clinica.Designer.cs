@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221104202154_Key")]
-    partial class Key
+    [Migration("20221107183623_Clinica")]
+    partial class Clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,25 +32,35 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.Property<string>("Cor")
                         .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
+
+                    b.Property<string>("EResultadoTriagem")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Especie")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
-                    b.Property<int>("Idade")
-                        .HasColumnType("integer");
+                    b.Property<double>("Idade")
+                        .HasMaxLength(2)
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
-                    b.Property<float>("Peso")
-                        .HasColumnType("real");
+                    b.Property<double>("Peso")
+                        .HasMaxLength(4)
+                        .HasColumnType("double precision");
 
                     b.Property<string>("Raca")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
 
                     b.Property<Guid>("TutorId")
                         .HasColumnType("uuid");
@@ -66,10 +76,11 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("368a4087-3de7-4bc8-921e-aa6a5a9be54a"),
                             Cor = "Preta",
+                            EResultadoTriagem = "Odontologia",
                             Especie = "Cachorro",
-                            Idade = 4,
+                            Idade = 4.0,
                             Nome = "Nymeria",
-                            Peso = 22f,
+                            Peso = 22.0,
                             Raca = "Pastor Alemão",
                             TutorId = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029")
                         },
@@ -77,10 +88,11 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("234eea2a-0348-45b5-99a1-44b20f010e03"),
                             Cor = "Marrom",
+                            EResultadoTriagem = "Cardiologia",
                             Especie = "Cachorro",
-                            Idade = 7,
+                            Idade = 7.0,
                             Nome = "Mel",
-                            Peso = 10f,
+                            Peso = 10.0,
                             Raca = "Shitzu",
                             TutorId = new Guid("40213770-be5a-4c20-9a3b-31e405378768")
                         });
@@ -96,9 +108,8 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("DataNascimento")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateOnly>("DataNascimento")
+                        .HasColumnType("date");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -121,7 +132,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"),
                             CPF = "12312332124",
-                            DataNascimento = "05/07/2000",
+                            DataNascimento = new DateOnly(2000, 5, 7),
                             Endereco = "Cabedelo",
                             Nome = "Cairo",
                             Telefone = "99999999"
@@ -130,7 +141,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("40213770-be5a-4c20-9a3b-31e405378768"),
                             CPF = "12312332124",
-                            DataNascimento = "02/05/2002",
+                            DataNascimento = new DateOnly(2002, 5, 2),
                             Endereco = "JP",
                             Nome = "Rita",
                             Telefone = "99999999"

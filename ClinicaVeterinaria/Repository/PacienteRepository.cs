@@ -11,7 +11,7 @@ namespace ClinicaVeterinaria.Repository {
         public PacienteRepository(ClinicaContext dbContext) {
             _dbContext = dbContext;
         }
-        public async Task<Paciente> Adicionar(PacienteAdicionarDto pacienteAdicionarDto) {
+        public async Task<Paciente> Adicionar(PacienteDto pacienteAdicionarDto) {
             
             Paciente paciente = new Paciente();
             paciente.Nome = pacienteAdicionarDto.Nome;
@@ -21,7 +21,7 @@ namespace ClinicaVeterinaria.Repository {
             paciente.Peso = pacienteAdicionarDto.Peso;
             paciente.Cor = pacienteAdicionarDto.Cor;
             paciente.TutorId = pacienteAdicionarDto.TutorId;
-            paciente.EDirecaoEspecialidade = pacienteAdicionarDto.EDirecaoEspecialidade;
+            paciente.EResultadoTriagem = pacienteAdicionarDto.EResultadoTriagem;
 
 
             await _dbContext.Pacientes.AddAsync(paciente);

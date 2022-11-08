@@ -1,4 +1,5 @@
 ﻿using ClinicaVeterinaria.Models;
+using ClinicaVeterinaria.Models.Dtos;
 using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,8 @@ namespace ClinicaVeterinaria.Controllers {
         }
 
         [HttpPost]
-        public async Task<ActionResult<Tutor>> Adicionar([FromBody] Tutor tutor) {
-            Tutor resultado = await _tutorRepository.Adicionar(tutor);
+        public async Task<ActionResult<Tutor>> Adicionar([FromBody] TutorAdicionarDto tutorAdicionarDto) {
+            Tutor resultado = await _tutorRepository.Adicionar(tutorAdicionarDto);
             return Ok(resultado);
         }
 

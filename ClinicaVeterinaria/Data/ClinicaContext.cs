@@ -9,6 +9,7 @@ namespace ClinicaVeterinaria.Data {
 
         public DbSet<Tutor> Tutores { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
+        public DbSet<LogErro> LogErros { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             Guid T1 = Guid.Parse("ea249baac22a495f981bed6d7c9ea029");

@@ -19,10 +19,8 @@ namespace ClinicaVeterinaria.Models {
         [MaxLength(150)]
         public string Raca { get; set; }
         [Required]
-        [MaxLength(2)]
         public double Idade { get; set; }
         [Required]
-        [MaxLength(4)]
         public double Peso { get; set; }
         [MaxLength(80)]
         [Required]

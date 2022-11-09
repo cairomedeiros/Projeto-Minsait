@@ -48,8 +48,8 @@ namespace ClinicaVeterinaria.Migrations
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Especie = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Raca = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    Idade = table.Column<double>(type: "double precision", maxLength: 2, nullable: false),
-                    Peso = table.Column<double>(type: "double precision", maxLength: 4, nullable: false),
+                    Idade = table.Column<double>(type: "double precision", nullable: false),
+                    Peso = table.Column<double>(type: "double precision", nullable: false),
                     Cor = table.Column<string>(type: "character varying(80)", maxLength: 80, nullable: false),
                     TutorId = table.Column<Guid>(type: "uuid", nullable: false),
                     EResultadoTriagem = table.Column<string>(type: "text", nullable: false)

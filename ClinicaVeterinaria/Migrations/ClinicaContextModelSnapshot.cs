@@ -71,7 +71,6 @@ namespace ClinicaVeterinaria.Migrations
                         .HasColumnType("character varying(100)");
 
                     b.Property<double>("Idade")
-                        .HasMaxLength(2)
                         .HasColumnType("double precision");
 
                     b.Property<string>("Nome")
@@ -80,7 +79,6 @@ namespace ClinicaVeterinaria.Migrations
                         .HasColumnType("character varying(100)");
 
                     b.Property<double>("Peso")
-                        .HasMaxLength(4)
                         .HasColumnType("double precision");
 
                     b.Property<string>("Raca")

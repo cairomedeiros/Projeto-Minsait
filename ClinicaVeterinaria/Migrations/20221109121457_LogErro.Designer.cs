@@ -3,6 +3,7 @@ using System;
 using ClinicaVeterinaria.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    partial class ClinicaContextModelSnapshot : ModelSnapshot
+    [Migration("20221109121457_LogErro")]
+    partial class LogErro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +49,7 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LogErros", (string)null);
+                    b.ToTable("LogErros");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
@@ -95,7 +97,7 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.HasIndex("TutorId");
 
-                    b.ToTable("Pacientes", (string)null);
+                    b.ToTable("Pacientes");
 
                     b.HasData(
                         new
@@ -151,7 +153,7 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tutores", (string)null);
+                    b.ToTable("Tutores");
 
                     b.HasData(
                         new

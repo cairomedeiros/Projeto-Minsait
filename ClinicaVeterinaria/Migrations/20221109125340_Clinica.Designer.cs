@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221107183623_Clinica")]
+    [Migration("20221109125340_Clinica")]
     partial class Clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,34 @@ namespace ClinicaVeterinaria.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("ClinicaVeterinaria.Models.LogErro", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("DataHoraRegistro")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("InnerException")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<string>("Mensagem")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("StackTrace")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LogErros");
+                });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
@@ -108,8 +136,8 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateOnly>("DataNascimento")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -132,7 +160,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"),
                             CPF = "12312332124",
-                            DataNascimento = new DateOnly(2000, 5, 7),
+                            DataNascimento = new DateTime(2000, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereco = "Cabedelo",
                             Nome = "Cairo",
                             Telefone = "99999999"
@@ -141,7 +169,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("40213770-be5a-4c20-9a3b-31e405378768"),
                             CPF = "12312332124",
-                            DataNascimento = new DateOnly(2002, 5, 2),
+                            DataNascimento = new DateTime(2002, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereco = "JP",
                             Nome = "Rita",
                             Telefone = "99999999"

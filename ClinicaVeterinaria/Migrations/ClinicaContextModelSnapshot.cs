@@ -29,7 +29,7 @@ namespace ClinicaVeterinaria.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("DataHoraRegistro")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("InnerException")
                         .HasMaxLength(500)
@@ -47,7 +47,7 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LogErros", (string)null);
+                    b.ToTable("LogErros");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
@@ -95,7 +95,7 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.HasIndex("TutorId");
 
-                    b.ToTable("Pacientes", (string)null);
+                    b.ToTable("Pacientes");
 
                     b.HasData(
                         new
@@ -134,8 +134,8 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateOnly>("DataNascimento")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -151,14 +151,14 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tutores", (string)null);
+                    b.ToTable("Tutores");
 
                     b.HasData(
                         new
                         {
                             Id = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"),
                             CPF = "12312332124",
-                            DataNascimento = new DateOnly(2000, 5, 7),
+                            DataNascimento = new DateTime(2000, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereco = "Cabedelo",
                             Nome = "Cairo",
                             Telefone = "99999999"
@@ -167,7 +167,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("40213770-be5a-4c20-9a3b-31e405378768"),
                             CPF = "12312332124",
-                            DataNascimento = new DateOnly(2002, 5, 2),
+                            DataNascimento = new DateTime(2002, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Endereco = "JP",
                             Nome = "Rita",
                             Telefone = "99999999"

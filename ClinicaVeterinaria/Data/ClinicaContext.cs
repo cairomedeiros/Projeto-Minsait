@@ -22,8 +22,8 @@ namespace ClinicaVeterinaria.Data {
                   .HasConversion(typeof(string));
 
             modelBuilder.Entity<Tutor>().HasData(
-            new Tutor { Id = T1, Nome = "Cairo", CPF = "12312332124", Endereco = "Cabedelo", Telefone = "99999999", DataNascimento = new DateOnly(2000, 05, 07) },
-            new Tutor { Id = T2, Nome = "Rita", CPF = "12312332124", Endereco = "JP", Telefone = "99999999", DataNascimento = new DateOnly(2002, 05, 02) }
+            new Tutor { Id = T1, Nome = "Cairo", CPF = "12312332124", Endereco = "Cabedelo", Telefone = "99999999", DataNascimento = DateTime.ParseExact("05-07-2000", "dd-MM-yyyy", null) },
+            new Tutor { Id = T2, Nome = "Rita", CPF = "12312332124", Endereco = "JP", Telefone = "99999999", DataNascimento = DateTime.ParseExact("02-05-2002", "dd-MM-yyyy", null) }
             );
 
             modelBuilder.Entity<Paciente>().HasData(

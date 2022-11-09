@@ -10,6 +10,21 @@ namespace ClinicaVeterinaria.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "LogErros",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    StackTrace = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
+                    Mensagem = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    InnerException = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    DataHoraRegistro = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LogErros", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tutores",
                 columns: table => new
                 {
@@ -18,7 +33,7 @@ namespace ClinicaVeterinaria.Migrations
                     CPF = table.Column<string>(type: "text", nullable: false),
                     Endereco = table.Column<string>(type: "text", nullable: false),
                     Telefone = table.Column<string>(type: "text", nullable: false),
-                    DataNascimento = table.Column<DateOnly>(type: "date", nullable: false)
+                    DataNascimento = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,8 +48,8 @@ namespace ClinicaVeterinaria.Migrations
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Especie = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Raca = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    Idade = table.Column<double>(type: "double precision", maxLength: 2, nullable: false),
-                    Peso = table.Column<double>(type: "double precision", maxLength: 4, nullable: false),
+                    Idade = table.Column<double>(type: "double precision", nullable: false),
+                    Peso = table.Column<double>(type: "double precision", nullable: false),
                     Cor = table.Column<string>(type: "character varying(80)", maxLength: 80, nullable: false),
                     TutorId = table.Column<Guid>(type: "uuid", nullable: false),
                     EResultadoTriagem = table.Column<string>(type: "text", nullable: false)
@@ -55,8 +70,8 @@ namespace ClinicaVeterinaria.Migrations
                 columns: new[] { "Id", "CPF", "DataNascimento", "Endereco", "Nome", "Telefone" },
                 values: new object[,]
                 {
-                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), "12312332124", new DateOnly(2002, 5, 2), "JP", "Rita", "99999999" },
-                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), "12312332124", new DateOnly(2000, 5, 7), "Cabedelo", "Cairo", "99999999" }
+                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), "12312332124", new DateTime(2002, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "JP", "Rita", "99999999" },
+                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), "12312332124", new DateTime(2000, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cabedelo", "Cairo", "99999999" }
                 });
 
             migrationBuilder.InsertData(
@@ -76,6 +91,9 @@ namespace ClinicaVeterinaria.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "LogErros");
+
             migrationBuilder.DropTable(
                 name: "Pacientes");
 

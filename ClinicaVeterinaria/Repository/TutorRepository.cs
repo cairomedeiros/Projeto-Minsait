@@ -5,15 +5,19 @@ using ClinicaVeterinaria.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
-namespace ClinicaVeterinaria.Repository {
-    public class TutorRepository : ITutorRepository {
+namespace ClinicaVeterinaria.Repository
+{
+    public class TutorRepository : ITutorRepository
+    {
         private readonly ClinicaContext _dbContext;
 
-        public TutorRepository(ClinicaContext dbContext) {
+        public TutorRepository(ClinicaContext dbContext)
+        {
             _dbContext = dbContext;
         }
 
-        public async Task<Tutor> Adicionar(TutorAdicionarDto tutorAdicionarDto) {
+        public async Task<Tutor> Adicionar(TutorAdicionarDto tutorAdicionarDto)
+        {
             Tutor tutor = new Tutor();
 
             tutor.Nome = tutorAdicionarDto.Nome;
@@ -28,26 +32,25 @@ namespace ClinicaVeterinaria.Repository {
             return tutor;
         }
 
-        public async Task<Tutor> BuscarPorId(Guid id) {
-
+        public async Task<Tutor> BuscarPorId(Guid id)
+        {
             var tutor = await _dbContext.Tutores
                 .Include(x => x.PacienteList)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-
-            if (tutor == null) {
+            if (tutor == null)
+            {
                 throw new Exception($"Tutor com Id: ${id} não encontrado");
-                
             }
-
             return tutor;
-
         }
 
-        public async Task<bool> DeletarTutor(Guid id) {
+        public async Task<bool> DeletarTutor(Guid id)
+        {
             var tutorId = await _dbContext.Tutores.FindAsync(id);
 
-            if(tutorId == null) {
+            if (tutorId == null)
+            {
                 throw new Exception($"Tutor com Id: ${id} não encontrado");
             }
 
@@ -57,12 +60,13 @@ namespace ClinicaVeterinaria.Repository {
             return true;
         }
 
-        public async Task<Tutor> Editar(Guid id, Tutor tutor) {
+        public async Task<Tutor> Editar(Guid id, Tutor tutor)
+        {
             var tutorId = await _dbContext.Tutores.FindAsync(id);
-            if(tutorId == null) {
+            if (tutorId == null)
+            {
                 throw new Exception($"Tutor com Id: ${id} não encontrado");
             }
-
             tutorId.Nome = tutor.Nome;
             tutorId.CPF = tutor.CPF;
             tutorId.Endereco = tutor.Endereco;
@@ -76,7 +80,8 @@ namespace ClinicaVeterinaria.Repository {
             return tutorId;
         }
 
-        public async Task<List<Tutor>> RetornarTodosTutores() {
+        public async Task<List<Tutor>> RetornarTodosTutores()
+        {
             return await _dbContext.Tutores.Include(x => x.PacienteList).ToListAsync();
         }
     }

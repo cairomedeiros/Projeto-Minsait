@@ -1,9 +1,10 @@
 ﻿using ClinicaVeterinaria.Models;
 using ClinicaVeterinaria.Models.Dtos;
 
-namespace ClinicaVeterinaria.Repository.Interfaces {
-    public interface ITutorRepository {
-
+namespace ClinicaVeterinaria.Repository.Interfaces
+{
+    public interface ITutorRepository
+    {
         Task<List<Tutor>> RetornarTodosTutores();
         Task<Tutor> BuscarPorId(Guid id);
         Task<Tutor> Adicionar(TutorAdicionarDto tutorAdicionarDto);

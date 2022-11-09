@@ -3,9 +3,10 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ClinicaVeterinaria.Models {
-    public class Paciente {
-
+namespace ClinicaVeterinaria.Models
+{
+    public class Paciente
+    {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public Guid Id { get; set; }
@@ -19,10 +20,8 @@ namespace ClinicaVeterinaria.Models {
         [MaxLength(150)]
         public string Raca { get; set; }
         [Required]
-        [MaxLength(2)]
         public double Idade { get; set; }
         [Required]
-        [MaxLength(4)]
         public double Peso { get; set; }
         [MaxLength(80)]
         [Required]
@@ -32,7 +31,8 @@ namespace ClinicaVeterinaria.Models {
         [Required]
         public EResultadoTriagem EResultadoTriagem { get; set; }
 
-        public Paciente(Guid id, string nome, string especie, string raca, double idade, double peso, string cor, EResultadoTriagem eResultadoTriagem, Guid tutorId) {
+        public Paciente(Guid id, string nome, string especie, string raca, double idade, double peso, string cor, EResultadoTriagem eResultadoTriagem, Guid tutorId)
+        {
             Id = id;
             Nome = nome;
             Especie = especie;
@@ -44,8 +44,8 @@ namespace ClinicaVeterinaria.Models {
             TutorId = tutorId;
         }
 
-        public Paciente() {
-
+        public Paciente()
+        {
         }
     }
 }

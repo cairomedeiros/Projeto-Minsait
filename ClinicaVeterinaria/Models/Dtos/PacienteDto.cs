@@ -1,8 +1,10 @@
 ﻿using ClinicaVeterinaria.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace ClinicaVeterinaria.Models.Dtos {
-    public class PacienteDto {
+namespace ClinicaVeterinaria.Models.Dtos
+{
+    public class PacienteDto
+    {
         [Required]
         [MaxLength(100)]
         public string Nome { get; set; }

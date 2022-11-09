@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ClinicaVeterinaria.Models {
-    public class LogErro {
-
+namespace ClinicaVeterinaria.Models
+{
+    public class LogErro
+    {
         [Key]
         public Guid Id { get; set; }
         [Required, MaxLength(500)]

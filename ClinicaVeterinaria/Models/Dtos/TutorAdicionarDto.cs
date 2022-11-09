@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ClinicaVeterinaria.Models.Dtos {
-    public class TutorAdicionarDto {
-
+namespace ClinicaVeterinaria.Models.Dtos
+{
+    public class TutorAdicionarDto
+    {
         [Required]
         [MaxLength(150)]
         public string Nome { get; set; }

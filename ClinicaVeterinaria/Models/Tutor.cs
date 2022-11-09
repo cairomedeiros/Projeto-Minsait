@@ -3,9 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ClinicaVeterinaria.Models {
-    public class Tutor {
-
+namespace ClinicaVeterinaria.Models
+{
+    public class Tutor
+    {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public Guid Id { get; set; }
@@ -17,7 +18,8 @@ namespace ClinicaVeterinaria.Models {
         [ForeignKey("TutorId")]
         public List<Paciente> PacienteList { get; set; }
 
-        public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, DateTime dataNascimento) {
+        public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, DateTime dataNascimento)
+        {
             Id = id;
             Nome = nome;
             CPF = cPF;
@@ -26,7 +28,8 @@ namespace ClinicaVeterinaria.Models {
             DataNascimento = dataNascimento;
         }
 
-        public Tutor() {
+        public Tutor()
+        {
         }
     }
 }

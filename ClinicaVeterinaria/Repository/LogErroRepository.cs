@@ -1,15 +1,18 @@
 ﻿using ClinicaVeterinaria.Data;
 using ClinicaVeterinaria.Models;
 
-namespace ClinicaVeterinaria.Repository {
-    public class LogErroRepository {
+namespace ClinicaVeterinaria.Repository
+{
+    public class LogErroRepository
+    {
         private readonly ClinicaContext _dbContext;
 
-        public LogErroRepository(ClinicaContext dbContext) { 
+        public LogErroRepository(ClinicaContext dbContext)
+        {
             _dbContext = dbContext;
         }
-
-        public void Adicionar(Exception ex) {
+        public void Adicionar(Exception ex)
+        {
             var logErro = new LogErro();
 
             logErro.InnerException = ex.InnerException?.ToString();

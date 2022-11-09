@@ -1,5 +1,7 @@
-﻿namespace ClinicaVeterinaria.Enum {
-    public enum EResultadoTriagem{
+﻿namespace ClinicaVeterinaria.Enum
+{
+    public enum EResultadoTriagem
+    {
         Cardiologia,
         Nefrologia,
         Endocrinologia,

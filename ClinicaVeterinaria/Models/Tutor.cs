@@ -14,11 +14,11 @@ namespace ClinicaVeterinaria.Models
         public string CPF { get; set; }
         public string Endereco { get; set; }
         public string Telefone { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public string DataNascimento { get; set; }
         [ForeignKey("TutorId")]
-        public List<Paciente> PacienteList { get; set; }
+        public List<Paciente>? PacienteList { get; set; }
 
-        public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, DateTime dataNascimento)
+        public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, string dataNascimento)
         {
             Id = id;
             Nome = nome;

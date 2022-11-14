@@ -18,9 +18,8 @@ namespace ClinicaVeterinaria.Models.Dtos
         [MaxLength(15)]
         public string Telefone { get; set; }
         [Required]
-        public DateTime DataNascimento { get; set; }
-        [Required]
+        public string DataNascimento { get; set; }
         [ForeignKey("TutorId")]
-        public List<Paciente> PacienteList { get; set; }
+        public List<Paciente>? PacienteList { get; set; }
     }
 }

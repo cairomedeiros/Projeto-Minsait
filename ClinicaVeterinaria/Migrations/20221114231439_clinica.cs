@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ClinicaVeterinaria.Migrations
 {
-    public partial class Clinica : Migration
+    public partial class clinica : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace ClinicaVeterinaria.Migrations
                     CPF = table.Column<string>(type: "text", nullable: false),
                     Endereco = table.Column<string>(type: "text", nullable: false),
                     Telefone = table.Column<string>(type: "text", nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    DataNascimento = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,14 +45,14 @@ namespace ClinicaVeterinaria.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Especie = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    Raca = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: false),
-                    Idade = table.Column<double>(type: "double precision", nullable: false),
-                    Peso = table.Column<double>(type: "double precision", nullable: false),
-                    Cor = table.Column<string>(type: "character varying(80)", maxLength: 80, nullable: false),
-                    TutorId = table.Column<Guid>(type: "uuid", nullable: false),
-                    EResultadoTriagem = table.Column<string>(type: "text", nullable: false)
+                    Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Especie = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    Raca = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: true),
+                    Idade = table.Column<double>(type: "double precision", nullable: true),
+                    Peso = table.Column<double>(type: "double precision", nullable: true),
+                    Cor = table.Column<string>(type: "character varying(80)", maxLength: 80, nullable: true),
+                    TutorId = table.Column<Guid>(type: "uuid", nullable: true),
+                    EResultadoTriagem = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,8 +61,7 @@ namespace ClinicaVeterinaria.Migrations
                         name: "FK_Pacientes_Tutores_TutorId",
                         column: x => x.TutorId,
                         principalTable: "Tutores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -70,8 +69,8 @@ namespace ClinicaVeterinaria.Migrations
                 columns: new[] { "Id", "CPF", "DataNascimento", "Endereco", "Nome", "Telefone" },
                 values: new object[,]
                 {
-                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), "12312332124", new DateTime(2002, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "JP", "Rita", "99999999" },
-                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), "12312332124", new DateTime(2000, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cabedelo", "Cairo", "99999999" }
+                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), "12312332124", "05/07/2000", "JP", "Rita", "99999999" },
+                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), "12312332124", "02/05/2002", "Cabedelo", "Cairo", "99999999" }
                 });
 
             migrationBuilder.InsertData(

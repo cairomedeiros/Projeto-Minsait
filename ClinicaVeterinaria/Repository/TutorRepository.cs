@@ -72,7 +72,6 @@ namespace ClinicaVeterinaria.Repository
             tutorId.Endereco = tutor.Endereco;
             tutorId.Telefone = tutor.Telefone;
             tutorId.DataNascimento = tutor.DataNascimento;
-            tutorId.PacienteList = tutor.PacienteList;
 
             _dbContext.Tutores.Update(tutorId);
             await _dbContext.SaveChangesAsync();

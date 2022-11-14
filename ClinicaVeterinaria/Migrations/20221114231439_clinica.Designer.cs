@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221109130731_Clinica")]
-    partial class Clinica
+    [Migration("20221114231439_clinica")]
+    partial class clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,41 +54,36 @@ namespace ClinicaVeterinaria.Migrations
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Paciente", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<string>("Cor")
-                        .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("character varying(80)");
 
                     b.Property<string>("EResultadoTriagem")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Especie")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<double>("Idade")
+                    b.Property<double?>("Idade")
                         .HasColumnType("double precision");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<double>("Peso")
+                    b.Property<double?>("Peso")
                         .HasColumnType("double precision");
 
                     b.Property<string>("Raca")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
 
-                    b.Property<Guid>("TutorId")
+                    b.Property<Guid?>("TutorId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -134,8 +129,9 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("timestamp without time zone");
+                    b.Property<string>("DataNascimento")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Endereco")
                         .IsRequired()
@@ -158,7 +154,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"),
                             CPF = "12312332124",
-                            DataNascimento = new DateTime(2000, 7, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataNascimento = "02/05/2002",
                             Endereco = "Cabedelo",
                             Nome = "Cairo",
                             Telefone = "99999999"
@@ -167,7 +163,7 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("40213770-be5a-4c20-9a3b-31e405378768"),
                             CPF = "12312332124",
-                            DataNascimento = new DateTime(2002, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataNascimento = "05/07/2000",
                             Endereco = "JP",
                             Nome = "Rita",
                             Telefone = "99999999"
@@ -178,9 +174,7 @@ namespace ClinicaVeterinaria.Migrations
                 {
                     b.HasOne("ClinicaVeterinaria.Models.Tutor", null)
                         .WithMany("PacienteList")
-                        .HasForeignKey("TutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TutorId");
                 });
 
             modelBuilder.Entity("ClinicaVeterinaria.Models.Tutor", b =>

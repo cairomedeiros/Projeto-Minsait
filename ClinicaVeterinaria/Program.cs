@@ -26,10 +26,9 @@ namespace ClinicaVeterinaria
                                   builder =>
                                   {
                                       builder
-                                        .WithOrigins("http://localhost:3000")
-                                        //.AllowAnyOrigin()
-                                        .WithMethods("GET")
-                                        .AllowAnyHeader();
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod()
+                                        .AllowAnyOrigin();
                                   });
             });
 

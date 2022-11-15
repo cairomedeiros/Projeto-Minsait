@@ -9,6 +9,6 @@ namespace ClinicaVeterinaria.Repository.Interfaces
         Task<Tutor> BuscarPorId(Guid id);
         Task<Tutor> Adicionar(TutorAdicionarDto tutorAdicionarDto);
         Task<Tutor> Editar(Guid id, TutorEditarDTO tutorEditarDTO);
-        Task<bool> DeletarTutor(Guid id);
+        Task<bool> DesativarTutor(Guid id);
     }
 }

@@ -25,6 +25,7 @@ namespace ClinicaVeterinaria.Repository
             tutor.Endereco = tutorAdicionarDto.Endereco;
             tutor.Telefone = tutorAdicionarDto.Telefone;
             tutor.DataNascimento = tutorAdicionarDto.DataNascimento;
+            tutor.Ativo = true;
             tutor.PacienteList = tutorAdicionarDto.PacienteList;
 
             await _dbContext.Tutores.AddAsync(tutor);
@@ -45,7 +46,7 @@ namespace ClinicaVeterinaria.Repository
             return tutor;
         }
 
-        public async Task<bool> DeletarTutor(Guid id)
+        public async Task<bool> DesativarTutor(Guid id)
         {
             var tutorId = await _dbContext.Tutores.FindAsync(id);
 
@@ -54,7 +55,9 @@ namespace ClinicaVeterinaria.Repository
                 throw new Exception($"Tutor com Id: ${id} não encontrado");
             }
 
-            _dbContext.Remove(tutorId);
+            tutorId.Ativo = false;
+
+            _dbContext.Tutores.Update(tutorId);
             await _dbContext.SaveChangesAsync();
 
             return true;
@@ -81,7 +84,7 @@ namespace ClinicaVeterinaria.Repository
 
         public async Task<List<Tutor>> RetornarTodosTutores()
         {
-            return await _dbContext.Tutores.Include(x => x.PacienteList).ToListAsync();
+            return await _dbContext.Tutores.Include(x => x.PacienteList).Where(w => w.Ativo).ToListAsync();
         }
     }
 }

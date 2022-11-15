@@ -15,7 +15,7 @@ namespace ClinicaVeterinaria.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     StackTrace = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    Mensagem = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    Mensagem = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
                     InnerException = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
                     DataHoraRegistro = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
@@ -33,7 +33,8 @@ namespace ClinicaVeterinaria.Migrations
                     CPF = table.Column<string>(type: "text", nullable: false),
                     Endereco = table.Column<string>(type: "text", nullable: false),
                     Telefone = table.Column<string>(type: "text", nullable: false),
-                    DataNascimento = table.Column<string>(type: "text", nullable: false)
+                    DataNascimento = table.Column<string>(type: "text", nullable: false),
+                    Ativo = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,11 +67,12 @@ namespace ClinicaVeterinaria.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tutores",
-                columns: new[] { "Id", "CPF", "DataNascimento", "Endereco", "Nome", "Telefone" },
+                columns: new[] { "Id", "Ativo", "CPF", "DataNascimento", "Endereco", "Nome", "Telefone" },
                 values: new object[,]
                 {
-                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), "12312332124", "03/05/1990", "Grand Line", "Luffy", "99999999" },
-                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), "12312332124", "16/10/1997", "Konoha", "Naruto", "99999999" }
+                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), true, "12312332124", "03/05/1990", "Grand Line", "Luffy", "99999999" },
+                    { new Guid("6abd8cf3-4750-4cac-925f-8eaaea34234e"), false, "12312332124", "06/05/1987", "Konoha", "Jiraya", "99999999" },
+                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), true, "12312332124", "16/10/1997", "Konoha", "Naruto", "99999999" }
                 });
 
             migrationBuilder.InsertData(
@@ -80,6 +82,7 @@ namespace ClinicaVeterinaria.Migrations
                 {
                     { new Guid("0628d876-63b3-4b5e-923e-0678941494e5"), "Laranja", "Hematologia", "Dragão", 3.0, "Dragaozinho", 40.0, "Charmander", new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029") },
                     { new Guid("234eea2a-0348-45b5-99a1-44b20f010e03"), "Marrom", "Cardiologia", "Cachorro", 7.0, "Mel", 10.0, "Shitzu", new Guid("40213770-be5a-4c20-9a3b-31e405378768") },
+                    { new Guid("2694f3ac-9c20-4612-9179-d888a1a0f696"), "Laranja", "Nefrologia", "Sapo", 50.0, "Gamabunta", 1000.0, "Sapo gigante", new Guid("6abd8cf3-4750-4cac-925f-8eaaea34234e") },
                     { new Guid("368a4087-3de7-4bc8-921e-aa6a5a9be54a"), "Preta", "Odontologia", "Cachorro", 4.0, "Nymeria", 22.0, "Pastor Alemão", new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029") },
                     { new Guid("3abe35e4-ec64-4226-8ec7-f2d4fe942177"), "Preta e branca", "Endocrinologia", "Cachorro", 4.0, "Maya", 10.0, "Shitzu", new Guid("40213770-be5a-4c20-9a3b-31e405378768") },
                     { new Guid("59045bc1-2b6c-4f5a-a01d-79f5190a28e3"), "Laranja", "Cardiologia", "Peixe", 30.0, "Nemo", 1.0, "Peixe Palhaço", new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029") },

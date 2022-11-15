@@ -15,10 +15,11 @@ namespace ClinicaVeterinaria.Models
         public string Endereco { get; set; }
         public string Telefone { get; set; }
         public string DataNascimento { get; set; }
+        public bool Ativo { get; set; }
         [ForeignKey("TutorId")]
         public List<Paciente>? PacienteList { get; set; }
 
-        public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, string dataNascimento)
+        public Tutor(Guid id, string nome, string cPF, string endereco, string telefone, string dataNascimento, bool ativo)
         {
             Id = id;
             Nome = nome;
@@ -26,6 +27,7 @@ namespace ClinicaVeterinaria.Models
             Endereco = endereco;
             Telefone = telefone;
             DataNascimento = dataNascimento;
+            Ativo = ativo;
         }
 
         public Tutor()

@@ -84,11 +84,11 @@ namespace ClinicaVeterinaria.Controllers
         }
 
         [HttpDelete("{id:guid}")]
-        public async Task<ActionResult<bool>> DeletarTutor(Guid id)
+        public async Task<ActionResult<bool>> DesativarTutor(Guid id)
         {
             try
             {
-                bool resultado = await _tutorRepository.DeletarTutor(id);
+                bool resultado = await _tutorRepository.DesativarTutor(id);
                 return Ok(resultado);
             }
             catch (Exception ex)

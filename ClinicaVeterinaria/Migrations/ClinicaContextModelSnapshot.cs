@@ -37,8 +37,8 @@ namespace ClinicaVeterinaria.Migrations
 
                     b.Property<string>("Mensagem")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("StackTrace")
                         .IsRequired()
@@ -174,6 +174,18 @@ namespace ClinicaVeterinaria.Migrations
                             Peso = 40.0,
                             Raca = "Charmander",
                             TutorId = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029")
+                        },
+                        new
+                        {
+                            Id = new Guid("2694f3ac-9c20-4612-9179-d888a1a0f696"),
+                            Cor = "Laranja",
+                            EResultadoTriagem = "Nefrologia",
+                            Especie = "Sapo",
+                            Idade = 50.0,
+                            Nome = "Gamabunta",
+                            Peso = 1000.0,
+                            Raca = "Sapo gigante",
+                            TutorId = new Guid("6abd8cf3-4750-4cac-925f-8eaaea34234e")
                         });
                 });
 
@@ -182,6 +194,9 @@ namespace ClinicaVeterinaria.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("CPF")
                         .IsRequired()
@@ -211,6 +226,7 @@ namespace ClinicaVeterinaria.Migrations
                         new
                         {
                             Id = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"),
+                            Ativo = true,
                             CPF = "12312332124",
                             DataNascimento = "16/10/1997",
                             Endereco = "Konoha",
@@ -220,10 +236,21 @@ namespace ClinicaVeterinaria.Migrations
                         new
                         {
                             Id = new Guid("40213770-be5a-4c20-9a3b-31e405378768"),
+                            Ativo = true,
                             CPF = "12312332124",
                             DataNascimento = "03/05/1990",
                             Endereco = "Grand Line",
                             Nome = "Luffy",
+                            Telefone = "99999999"
+                        },
+                        new
+                        {
+                            Id = new Guid("6abd8cf3-4750-4cac-925f-8eaaea34234e"),
+                            Ativo = false,
+                            CPF = "12312332124",
+                            DataNascimento = "06/05/1987",
+                            Endereco = "Konoha",
+                            Nome = "Jiraya",
                             Telefone = "99999999"
                         });
                 });

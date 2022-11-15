@@ -8,7 +8,7 @@ namespace ClinicaVeterinaria.Models
         public Guid Id { get; set; }
         [Required, MaxLength(500)]
         public string StackTrace { get; set; }
-        [Required, MaxLength(200)]
+        [Required, MaxLength(500)]
         public string Mensagem { get; set; }
         [MaxLength(500)]
         public string? InnerException { get; set; }

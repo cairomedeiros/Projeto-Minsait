@@ -113,5 +113,20 @@ namespace ClinicaVeterinaria.Controllers
             }
         }
 
+        [HttpDelete("/api/Tutor/Ativar/{id:guid}")]
+        public async Task<ActionResult<bool>> AtivarTutor(Guid id)
+        {
+            try
+            {
+                bool resultado = await _tutorRepository.AtivarTutor(id);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                _logErroRepository.Adicionar(ex);
+                return BadRequest(erroBadRequest);
+            }
+        }
+
     }
 }

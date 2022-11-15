@@ -53,7 +53,7 @@ namespace ClinicaVeterinaria.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Paciente>> Adicionar([FromBody] PacienteDto pacienteAdicionarDto)
+        public async Task<ActionResult<Paciente>> Adicionar([FromBody] PacienteAdicionarDto pacienteAdicionarDto)
         {
             try
             {

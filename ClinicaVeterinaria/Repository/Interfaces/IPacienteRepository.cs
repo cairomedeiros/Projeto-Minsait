@@ -7,7 +7,7 @@ namespace ClinicaVeterinaria.Repository.Interfaces
     {
         Task<List<Paciente>> RetornarTodosPacientes();
         Task<Paciente> BuscarPorId(Guid id);
-        Task<Paciente> Adicionar(PacienteDto pacienteDto);
+        Task<Paciente> Adicionar(PacienteAdicionarDto pacienteDto);
         Task<Paciente> Editar(Guid id, Paciente paciente);
         Task<bool> DeletarPaciente(Guid id);
     }

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221114231439_clinica")]
-    partial class clinica
+    [Migration("20221115123949_Clinica")]
+    partial class Clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

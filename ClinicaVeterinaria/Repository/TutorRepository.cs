@@ -60,18 +60,18 @@ namespace ClinicaVeterinaria.Repository
             return true;
         }
 
-        public async Task<Tutor> Editar(Guid id, Tutor tutor)
+        public async Task<Tutor> Editar(Guid id, TutorEditarDTO tutorEditarDTO)
         {
             var tutorId = await _dbContext.Tutores.FindAsync(id);
             if (tutorId == null)
             {
                 throw new Exception($"Tutor com Id: ${id} não encontrado");
             }
-            tutorId.Nome = tutor.Nome;
-            tutorId.CPF = tutor.CPF;
-            tutorId.Endereco = tutor.Endereco;
-            tutorId.Telefone = tutor.Telefone;
-            tutorId.DataNascimento = tutor.DataNascimento;
+            tutorId.Nome = tutorEditarDTO.Nome;
+            tutorId.CPF = tutorEditarDTO.CPF;
+            tutorId.Endereco = tutorEditarDTO.Endereco;
+            tutorId.Telefone = tutorEditarDTO.Telefone;
+            tutorId.DataNascimento = tutorEditarDTO.DataNascimento;
 
             _dbContext.Tutores.Update(tutorId);
             await _dbContext.SaveChangesAsync();

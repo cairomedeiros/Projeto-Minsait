@@ -14,7 +14,7 @@ namespace ClinicaVeterinaria.Repository
         {
             _dbContext = dbContext;
         }
-        public async Task<Paciente> Adicionar(PacienteDto pacienteAdicionarDto)
+        public async Task<Paciente> Adicionar(PacienteAdicionarDto pacienteAdicionarDto)
         {
             Paciente paciente = new Paciente();
             paciente.Nome = pacienteAdicionarDto.Nome;
@@ -50,7 +50,7 @@ namespace ClinicaVeterinaria.Repository
 
             if (pacienteId == null)
             {
-                throw new Exception($"Tutor com Id: ${id} não encontrado");
+                throw new Exception($"Paciente com Id: ${id} não encontrado");
             }
             _dbContext.Remove(pacienteId);
             await _dbContext.SaveChangesAsync();
@@ -63,7 +63,7 @@ namespace ClinicaVeterinaria.Repository
             var pacienteId = await _dbContext.Pacientes.FindAsync(id);
             if (pacienteId == null)
             {
-                throw new Exception($"Tutor com Id: ${id} não encontrado");
+                throw new Exception($"Paciente com Id: ${id} não encontrado");
             }
             pacienteId.Nome = paciente.Nome;
             pacienteId.Especie = paciente.Especie;

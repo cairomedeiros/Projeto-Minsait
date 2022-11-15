@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClinicaVeterinaria.Migrations
 {
     [DbContext(typeof(ClinicaContext))]
-    [Migration("20221115123949_Clinica")]
+    [Migration("20221115130834_Clinica")]
     partial class Clinica
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,6 +116,66 @@ namespace ClinicaVeterinaria.Migrations
                             Peso = 10.0,
                             Raca = "Shitzu",
                             TutorId = new Guid("40213770-be5a-4c20-9a3b-31e405378768")
+                        },
+                        new
+                        {
+                            Id = new Guid("59045bc1-2b6c-4f5a-a01d-79f5190a28e3"),
+                            Cor = "Laranja",
+                            EResultadoTriagem = "Cardiologia",
+                            Especie = "Peixe",
+                            Idade = 30.0,
+                            Nome = "Nemo",
+                            Peso = 1.0,
+                            Raca = "Peixe Palhaço",
+                            TutorId = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029")
+                        },
+                        new
+                        {
+                            Id = new Guid("3abe35e4-ec64-4226-8ec7-f2d4fe942177"),
+                            Cor = "Preta e branca",
+                            EResultadoTriagem = "Endocrinologia",
+                            Especie = "Cachorro",
+                            Idade = 4.0,
+                            Nome = "Maya",
+                            Peso = 10.0,
+                            Raca = "Shitzu",
+                            TutorId = new Guid("40213770-be5a-4c20-9a3b-31e405378768")
+                        },
+                        new
+                        {
+                            Id = new Guid("eaa6291d-849a-471d-bc0b-2be7bcc3c696"),
+                            Cor = "Azul",
+                            EResultadoTriagem = "Nutrologia",
+                            Especie = "Pokemón Tartaruga",
+                            Idade = 12.0,
+                            Nome = "Giga",
+                            Peso = 700.0,
+                            Raca = "Blastoise",
+                            TutorId = new Guid("40213770-be5a-4c20-9a3b-31e405378768")
+                        },
+                        new
+                        {
+                            Id = new Guid("9bac6f15-a352-481c-b06e-3e0d82f18ff4"),
+                            Cor = "Verde e branca",
+                            EResultadoTriagem = "Oftalmologia",
+                            Especie = "Pokemón Gato",
+                            Idade = 5.0,
+                            Nome = "Snorlax",
+                            Peso = 1000.0,
+                            Raca = "Snorlax",
+                            TutorId = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029")
+                        },
+                        new
+                        {
+                            Id = new Guid("0628d876-63b3-4b5e-923e-0678941494e5"),
+                            Cor = "Laranja",
+                            EResultadoTriagem = "Hematologia",
+                            Especie = "Dragão",
+                            Idade = 3.0,
+                            Nome = "Dragaozinho",
+                            Peso = 40.0,
+                            Raca = "Charmander",
+                            TutorId = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029")
                         });
                 });
 
@@ -154,18 +214,18 @@ namespace ClinicaVeterinaria.Migrations
                         {
                             Id = new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"),
                             CPF = "12312332124",
-                            DataNascimento = "02/05/2002",
-                            Endereco = "Cabedelo",
-                            Nome = "Cairo",
+                            DataNascimento = "16/10/1997",
+                            Endereco = "Konoha",
+                            Nome = "Naruto",
                             Telefone = "99999999"
                         },
                         new
                         {
                             Id = new Guid("40213770-be5a-4c20-9a3b-31e405378768"),
                             CPF = "12312332124",
-                            DataNascimento = "05/07/2000",
-                            Endereco = "JP",
-                            Nome = "Rita",
+                            DataNascimento = "03/05/1990",
+                            Endereco = "Grand Line",
+                            Nome = "Luffy",
                             Telefone = "99999999"
                         });
                 });

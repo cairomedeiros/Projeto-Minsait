@@ -33,6 +33,8 @@ namespace ClinicaVeterinaria.Repository
             return tutor;
         }
 
+
+
         public async Task<Tutor> BuscarPorId(Guid id)
         {
             var tutor = await _dbContext.Tutores
@@ -63,6 +65,23 @@ namespace ClinicaVeterinaria.Repository
             return true;
         }
 
+        public async Task<bool> AtivarTutor(Guid id)
+        {
+            var tutorId = await _dbContext.Tutores.FindAsync(id);
+
+            if (tutorId == null)
+            {
+                throw new Exception($"Tutor com Id: ${id} não encontrado");
+            }
+
+            tutorId.Ativo = true;
+
+            _dbContext.Tutores.Update(tutorId);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task<Tutor> Editar(Guid id, TutorEditarDTO tutorEditarDTO)
         {
             var tutorId = await _dbContext.Tutores.FindAsync(id);
@@ -85,6 +104,11 @@ namespace ClinicaVeterinaria.Repository
         public async Task<List<Tutor>> RetornarTodosTutores()
         {
             return await _dbContext.Tutores.Include(x => x.PacienteList).Where(w => w.Ativo).ToListAsync();
+        }
+
+        public async Task<List<Tutor>> RetornarTutoresDesativados()
+        {
+            return await _dbContext.Tutores.Include(x => x.PacienteList).Where(w => w.Ativo == false).ToListAsync();
         }
     }
 }

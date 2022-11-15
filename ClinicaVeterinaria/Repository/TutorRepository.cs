@@ -86,5 +86,10 @@ namespace ClinicaVeterinaria.Repository
         {
             return await _dbContext.Tutores.Include(x => x.PacienteList).Where(w => w.Ativo).ToListAsync();
         }
+
+        public async Task<List<Tutor>> RetornarTutoresDesativados()
+        {
+            return await _dbContext.Tutores.Include(x => x.PacienteList).Where(w => w.Ativo == false).ToListAsync();
+        }
     }
 }

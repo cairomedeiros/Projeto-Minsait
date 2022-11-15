@@ -37,6 +37,21 @@ namespace ClinicaVeterinaria.Controllers
             }
         }
 
+        [HttpGet("/api/Tutor/Desativados")]
+        public async Task<ActionResult<List<Tutor>>> RetornarTutoresDesativados()
+        {
+            try
+            {
+                List<Tutor> resultado = await _tutorRepository.RetornarTutoresDesativados();
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                _logErroRepository.Adicionar(ex);
+                return BadRequest(erroBadRequest);
+            }
+        }
+
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Tutor>> BuscarPorId(Guid id)
         {

@@ -37,21 +37,6 @@ namespace ClinicaVeterinaria.Controllers
             }
         }
 
-        [HttpGet("/api/Tutor/Desativados")]
-        public async Task<ActionResult<List<Tutor>>> RetornarTutoresDesativados()
-        {
-            try
-            {
-                List<Tutor> resultado = await _tutorRepository.RetornarTutoresDesativados();
-                return Ok(resultado);
-            }
-            catch (Exception ex)
-            {
-                _logErroRepository.Adicionar(ex);
-                return BadRequest(erroBadRequest);
-            }
-        }
-
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Tutor>> BuscarPorId(Guid id)
         {
@@ -104,21 +89,6 @@ namespace ClinicaVeterinaria.Controllers
             try
             {
                 bool resultado = await _tutorRepository.DesativarTutor(id);
-                return Ok(resultado);
-            }
-            catch (Exception ex)
-            {
-                _logErroRepository.Adicionar(ex);
-                return BadRequest(erroBadRequest);
-            }
-        }
-
-        [HttpDelete("/api/Tutor/Ativar/{id:guid}")]
-        public async Task<ActionResult<bool>> AtivarTutor(Guid id)
-        {
-            try
-            {
-                bool resultado = await _tutorRepository.AtivarTutor(id);
                 return Ok(resultado);
             }
             catch (Exception ex)

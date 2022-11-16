@@ -32,9 +32,9 @@ namespace ClinicaVeterinaria.Data
                   .HasConversion(typeof(string));
 
             modelBuilder.Entity<Tutor>().HasData(
-            new Tutor { Id = T1, Nome = "Naruto", CPF = "12312332124", Endereco = "Konoha", Telefone = "99999999", DataNascimento = "16/10/1997", Ativo = true},
-            new Tutor { Id = T2, Nome = "Luffy", CPF = "12312332124", Endereco = "Grand Line", Telefone = "99999999", DataNascimento = "03/05/1990", Ativo = true},
-            new Tutor { Id = T3, Nome = "Jiraya", CPF = "12312332124", Endereco = "Konoha", Telefone = "99999999", DataNascimento = "06/05/1987", Ativo = false }
+            new Tutor { Id = T1, Nome = "Naruto", CPF = "12312332124", Email = "narutouzumaki9@yahoo.com", Telefone = "99999999", DataNascimento = "16/10/1997", Ativo = true},
+            new Tutor { Id = T2, Nome = "Luffy", CPF = "12312332124", Email = "monkeyd.luffy@pirate.com", Telefone = "99999999", DataNascimento = "03/05/1990", Ativo = true},
+            new Tutor { Id = T3, Nome = "Jiraya", CPF = "12312332124", Email = "jirayaninja@gmail.com", Telefone = "99999999", DataNascimento = "06/05/1987", Ativo = false }
             );
 
             modelBuilder.Entity<Paciente>().HasData(

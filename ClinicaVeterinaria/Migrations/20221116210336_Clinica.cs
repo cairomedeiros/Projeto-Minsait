@@ -31,7 +31,7 @@ namespace ClinicaVeterinaria.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Nome = table.Column<string>(type: "text", nullable: false),
                     CPF = table.Column<string>(type: "text", nullable: false),
-                    Endereco = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
                     Telefone = table.Column<string>(type: "text", nullable: false),
                     DataNascimento = table.Column<string>(type: "text", nullable: false),
                     Ativo = table.Column<bool>(type: "boolean", nullable: false)
@@ -67,12 +67,12 @@ namespace ClinicaVeterinaria.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tutores",
-                columns: new[] { "Id", "Ativo", "CPF", "DataNascimento", "Endereco", "Nome", "Telefone" },
+                columns: new[] { "Id", "Ativo", "CPF", "DataNascimento", "Email", "Nome", "Telefone" },
                 values: new object[,]
                 {
-                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), true, "12312332124", "03/05/1990", "Grand Line", "Luffy", "99999999" },
-                    { new Guid("6abd8cf3-4750-4cac-925f-8eaaea34234e"), false, "12312332124", "06/05/1987", "Konoha", "Jiraya", "99999999" },
-                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), true, "12312332124", "16/10/1997", "Konoha", "Naruto", "99999999" }
+                    { new Guid("40213770-be5a-4c20-9a3b-31e405378768"), true, "12312332124", "03/05/1990", "monkeyd.luffy@pirate.com", "Luffy", "99999999" },
+                    { new Guid("6abd8cf3-4750-4cac-925f-8eaaea34234e"), false, "12312332124", "06/05/1987", "jirayaninja@gmail.com", "Jiraya", "99999999" },
+                    { new Guid("ea249baa-c22a-495f-981b-ed6d7c9ea029"), true, "12312332124", "16/10/1997", "narutouzumaki9@yahoo.com", "Naruto", "99999999" }
                 });
 
             migrationBuilder.InsertData(

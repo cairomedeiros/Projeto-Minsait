@@ -22,7 +22,7 @@ namespace ClinicaVeterinaria.Repository
 
             tutor.Nome = tutorAdicionarDto.Nome;
             tutor.CPF = tutorAdicionarDto.CPF;
-            tutor.Endereco = tutorAdicionarDto.Endereco;
+            tutor.Email = tutorAdicionarDto.Email;
             tutor.Telefone = tutorAdicionarDto.Telefone;
             tutor.DataNascimento = tutorAdicionarDto.DataNascimento;
             tutor.Ativo = true;
@@ -91,7 +91,7 @@ namespace ClinicaVeterinaria.Repository
             }
             tutorId.Nome = tutorEditarDTO.Nome;
             tutorId.CPF = tutorEditarDTO.CPF;
-            tutorId.Endereco = tutorEditarDTO.Endereco;
+            tutorId.Email = tutorEditarDTO.Email;
             tutorId.Telefone = tutorEditarDTO.Telefone;
             tutorId.DataNascimento = tutorEditarDTO.DataNascimento;
 

@@ -13,7 +13,7 @@ namespace ClinicaVeterinaria.Models.Dtos
         [Required]
         public string CPF { get; set; }
         [Required]
-        public string Endereco { get; set; }
+        public string Email { get; set; }
         [Required]
         public string Telefone { get; set; }
         [Required]

@@ -206,7 +206,7 @@ namespace ClinicaVeterinaria.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Endereco")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -229,7 +229,7 @@ namespace ClinicaVeterinaria.Migrations
                             Ativo = true,
                             CPF = "12312332124",
                             DataNascimento = "16/10/1997",
-                            Endereco = "Konoha",
+                            Email = "narutouzumaki9@yahoo.com",
                             Nome = "Naruto",
                             Telefone = "99999999"
                         },
@@ -239,7 +239,7 @@ namespace ClinicaVeterinaria.Migrations
                             Ativo = true,
                             CPF = "12312332124",
                             DataNascimento = "03/05/1990",
-                            Endereco = "Grand Line",
+                            Email = "monkeyd.luffy@pirate.com",
                             Nome = "Luffy",
                             Telefone = "99999999"
                         },
@@ -249,7 +249,7 @@ namespace ClinicaVeterinaria.Migrations
                             Ativo = false,
                             CPF = "12312332124",
                             DataNascimento = "06/05/1987",
-                            Endereco = "Konoha",
+                            Email = "jirayaninja@gmail.com",
                             Nome = "Jiraya",
                             Telefone = "99999999"
                         });

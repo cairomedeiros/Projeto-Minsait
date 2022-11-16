@@ -68,12 +68,12 @@ namespace ClinicaVeterinaria.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult<Paciente>> Editar(Guid id, [FromBody] Paciente paciente)
+        public async Task<ActionResult<Paciente>> Editar(Guid id, [FromBody] PacienteEditarDto pacienteEditarDto)
         {
             try
             {
-                paciente.Id = id;
-                Paciente resultado = await _pacienteRepository.Editar(id, paciente);
+                pacienteEditarDto.Id = id;
+                Paciente resultado = await _pacienteRepository.Editar(id, pacienteEditarDto);
                 return Ok(resultado);
             }
             catch (Exception ex)

@@ -58,19 +58,20 @@ namespace ClinicaVeterinaria.Repository
             return true;
         }
 
-        public async Task<Paciente> Editar(Guid id, Paciente paciente)
+        public async Task<Paciente> Editar(Guid id, PacienteEditarDto pacienteEditarDto)
         {
             var pacienteId = await _dbContext.Pacientes.FindAsync(id);
             if (pacienteId == null)
             {
                 throw new Exception($"Paciente com Id: ${id} não encontrado");
             }
-            pacienteId.Nome = paciente.Nome;
-            pacienteId.Especie = paciente.Especie;
-            pacienteId.Raca = paciente.Raca;
-            pacienteId.Idade = paciente.Idade;
-            pacienteId.Peso = paciente.Peso;
-            pacienteId.Cor = paciente.Cor;
+            pacienteId.Nome = pacienteEditarDto.Nome;
+            pacienteId.Especie = pacienteEditarDto.Especie;
+            pacienteId.Raca = pacienteEditarDto.Raca;
+            pacienteId.Idade = pacienteEditarDto.Idade;
+            pacienteId.Peso = pacienteEditarDto.Peso;
+            pacienteId.Cor = pacienteEditarDto.Cor;
+            pacienteId.EResultadoTriagem = pacienteEditarDto.EResultadoTriagem;
 
             _dbContext.Pacientes.Update(pacienteId);
             await _dbContext.SaveChangesAsync();

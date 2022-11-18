@@ -33,9 +33,7 @@ Projeto desenvolvido para gerenciar os pacientes de uma clínica veterinária, o
     "PostgreSQLConnection": "User ID={Seu user};Password={Sua senha};Host=localhost;Port=5432;Database=clinica-veterinaria;"
   }
 ```  
-2. No Program.cs, comentar a linha 61 de código
-  
-3. Agora basta rodar o projeto no Visual Code normalmente
+2. Agora basta rodar o projeto no Visual Studio normalmente
 
 # Executando projeto no Docker
 ## Pré-requisitos

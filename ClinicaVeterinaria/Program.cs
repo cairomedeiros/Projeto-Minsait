@@ -57,7 +57,6 @@ namespace ClinicaVeterinaria
             app.UseSwagger();
             app.UseSwaggerUI();
 
-            //Comentar caso rode o projeto manualmente
             InitialMigration.RestoreMigration(app);
             app.UseHttpsRedirection();
             app.UseCors(policyName);

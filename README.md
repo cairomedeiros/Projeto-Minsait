@@ -18,3 +18,42 @@ Projeto desenvolvido para gerenciar os pacientes de uma clínica veterinária, o
 - cada tutor pode ter mais de um animal (paciente)
 - um animal tem apenas um dono
 - um animal terá um campo para indicar qual tipo de médico ir pós triagem
+
+# Executando projeto localmente
+## Pré-requisitos
+- <a href="https://visualstudio.microsoft.com/pt-br/downloads/">Visual Studio</a>
+- <a href="https://www.postgresql.org/download/windows/">Postgresql</a>
+- Criar no Postgres um banco de dados com o nome "clinica-veterinaria"
+
+## Configuração
+
+1. Agora tem-se que alterar no arquivo "appsettings.json" a connection string, por default o user id é postgres
+```
+"ConnectionStrings": {
+    "PostgreSQLConnection": "User ID={Seu user};Password={Sua senha};Host=localhost;Port=5432;Database=clinica-veterinaria;"
+  }
+```  
+2. No Program.cs, comentar a linha 61 de código
+  
+3. Agora basta rodar o projeto no Visual Code normalmente
+
+# Executando projeto no Docker
+## Pré-requisitos
+- <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>
+
+## Instalação
+
+Clone o repositório, entre na raíz do projeto e inicie o build do container com o comando "docker-compose up --build"
+```
+git clone https://github.com/cairomedeiros/Projeto-Minsait.git
+cd Projeto-Minsait/ClinicaVeterinaria
+docker-compose up --build
+```
+
+## Parando a execução do container
+
+Caso queirar parar a execução, digite o seguinte comando:
+
+```
+docker-compose down
+```

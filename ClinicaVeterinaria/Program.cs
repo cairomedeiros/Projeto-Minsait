@@ -2,6 +2,7 @@ using ClinicaVeterinaria.Data;
 using ClinicaVeterinaria.Models;
 using ClinicaVeterinaria.Repository;
 using ClinicaVeterinaria.Repository.Interfaces;
+using ClinicaVeterinaria.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -50,10 +51,14 @@ namespace ClinicaVeterinaria
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI();
+
+            //Comentar caso rode o projeto manualmente
+            InitialMigration.RestoreMigration(app);
             app.UseHttpsRedirection();
             app.UseCors(policyName);
 

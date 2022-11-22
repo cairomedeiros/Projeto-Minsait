@@ -47,6 +47,12 @@ git clone https://github.com/cairomedeiros/Projeto-Minsait.git
 cd Projeto-Minsait/ClinicaVeterinaria
 docker-compose up --build
 ```
+URL's de exposição no docker, com e sem swagger
+
+```
+http:localhost:5000/swagger
+http://localhost:5000/api/{endpoint}
+```
 
 ## Parando a execução do container
 

@@ -50,7 +50,7 @@ docker-compose up --build
 URL's de exposição no docker, com e sem swagger
 
 ```
-http:localhost:5000/swagger
+http://localhost:5000/swagger
 http://localhost:5000/api/{endpoint}
 ```
 
